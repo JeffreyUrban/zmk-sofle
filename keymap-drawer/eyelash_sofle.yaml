@@ -2,19 +2,19 @@ layout: {zmk_keyboard: eyelash_sofle}
 layers:
   Base:
   - Ctl+$$mdi:arrow-up-bold$$
-  - Ctl+$$mdi:arrow-down-bold$$
+  - Gui+$$mdi:keyboard-space$$
+  - {t: Gui+Sft+4, s: Gui+Sft+$}
+  - $$mdi:play-pause$$
   - Ctl+$$mdi:arrow-left-bold$$
   - Ctl+$$mdi:arrow-right-bold$$
-  - Gui+$$mdi:keyboard-space$$
-  - Ctl+Gui+D
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:skip-previous$$
-  - $$mdi:play-pause$$
-  - $$mdi:skip-next$$
-  - {t: Gui+Sft+4, s: Gui+Sft+$}
+  - Ctl+$$mdi:arrow-down-bold$$
+  - {t: 'Gui+[', s: 'Gui+{'}
+  - {t: 'Gui+]', s: 'Gui+}'}
+  - Ctl+Gui+D
   - {t: Gui+Sft+5, s: Gui+Sft+%}
   - Ctl+Gui+F
-  - {t: 'Gui+[', s: 'Gui+{'}
+  - $$mdi:volume-high$$
   - Q
   - W
   - F
@@ -26,8 +26,8 @@ layers:
   - U
   - Y
   - {t: '''', s: '"'}
-  - {t: 'Gui+]', s: 'Gui+}'}
-  - $$mdi:volume-high$$
+  - $$mdi:skip-previous$$
+  - $$mdi:volume-low$$
   - {t: A, h: LGUI}
   - {t: R, h: '$$mdi:apple-keyboard-option$$'}
   - {t: S, h: '$$mdi:apple-keyboard-control$$'}
@@ -39,8 +39,8 @@ layers:
   - {t: E, h: '$$mdi:apple-keyboard-control$$'}
   - {t: I, h: '$$mdi:apple-keyboard-option$$'}
   - {t: O, h: RGUI}
-  - $$mdi:brightness-5$$
-  - $$mdi:volume-low$$
+  - $$mdi:skip-next$$
+  - $$mdi:volume-off$$
   - {t: Z, h: Button}
   - {t: X, h: '$$mdi:apple-keyboard-option$$'}
   - C
@@ -52,9 +52,9 @@ layers:
   - {t: ',', s: <}
   - {t: ., h: '$$mdi:apple-keyboard-option$$', s: '>'}
   - {t: /, h: Button, s: '?'}
-  - $$mdi:brightness-7$$
+  - $$mdi:brightness-5$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:volume-off$$
+  - F14
   - F13
   - {t: '$$mdi:keyboard-esc$$', h: Media}
   - {t: '$$mdi:keyboard-space$$', h: Nav}
@@ -63,7 +63,7 @@ layers:
   - {t: '$$mdi:keyboard-return$$', h: Sym}
   - {t: '$$mdi:backspace$$', h: Num}
   - {t: '$$mdi:backspace-reverse-outline$$', h: Fun}
-  - F14
+  - $$mdi:brightness-7$$
   - Shortcuts
   Nav:
   - {t: '$$mdi:transfer$$', type: trans}

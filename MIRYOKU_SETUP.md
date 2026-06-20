@@ -32,15 +32,16 @@ The design: **bare keys = instant, no-layer actions for when you're *not*
 typing** (one hand on the mouse, or dictating). A deeper palette is one thumb
 hold away.
 
+The mouse lives on the **right hand**, so the **left hand** is the only one free
+while pointing — the while-mousing essentials live on the 11 left-reachable bare
+keys; the rest are right-side, for not-mousing / both-hands moments.
+
 ### Tier 1 — bare keys (act on macOS)
 
-| Where | Keys |
+| Side | Keys |
 |---|---|
-| Top row, left | Mission Control · App Exposé · Space ← · Space → · Spotlight · Look-up |
-| Top row, right | Prev · Play/Pause · Next · Screenshot region · Screenshot tool · Fullscreen |
-| Left outer column | Back (⌘[) · Volume Up · Volume Down |
-| Right outer column | Forward (⌘]) · Brightness Up · Brightness Down |
-| Outer thumb keys | `53` Mute · `54` **Dictation** · `62` **OCR** · `63` hold → Shortcuts |
+| **Left (while mousing)** | Mission Control · Spotlight · Screenshot region · Play/Pause · Space ← · Space → · Vol Up · Vol Down · Mute · **OCR** (53) · **Dictation** (54) |
+| **Right (both-hands)** | App Exposé · Back (⌘[) · Forward (⌘]) · Look-up · Screenshot tool · Fullscreen · Prev · Next · Brightness Up/Down · `63` hold → Shortcuts |
 
 ### Tier 2 — Shortcuts layer (hold the outer-right thumb, `63`)
 

@@ -239,18 +239,20 @@
         compatible = "zmk,keymap";
 
         // ============================ BASE ============================
-        // Colemak-DH core + Miryoku thumbs. Extras = TIER-1 macOS actions:
-        //   Top L : MissCtrl Expose Space< Space> Spotlight Look-up
-        //   Top R : Prev PlayPause Next Screenshot-region -tool Fullscreen
-        //   Outer : (L) Back VolUp VolDn   (R) Fwd BriUp BriDn
-        //   Thumbs: 53 Mute  54 Dictation  62 OCR  63 hold->SHORTCUTS
+        // Mouse lives on the RIGHT hand, so the LEFT-side bare keys hold the
+        // while-mousing essentials (left hand is the only one free):
+        //   Top L : MissionControl Spotlight Screenshot-region PlayPause Space< Space>
+        //   L-out : VolUp VolDn Mute        L-thumbs: 53 OCR  54 Dictation
+        // RIGHT-side bare keys are for not-mousing / both-hands moments:
+        //   Top R : AppExpose Back Fwd Look-up Screenshot-tool Fullscreen
+        //   R-out : Prev Next BriUp          R-thumbs: 62 BriDn  63 hold->SHORTCUTS
         layer0 {
             bindings = <
-&kp LC(UP)    &kp LC(DOWN)  &kp LC(LEFT)  &kp LC(RIGHT) &kp LG(SPACE) &kp LC(LG(D))   &none   &kp C_PREV    &kp C_PP      &kp C_NEXT    &kp LG(LS(N4)) &kp LG(LS(N5)) &kp LC(LG(F))
-&kp LG(LBKT)  &kp Q         &kp W         &kp F         &kp P         &kp B           &none   &kp J         &kp L         &kp U         &kp Y          &kp SQT        &kp LG(RBKT)
-&kp C_VOL_UP  &hml LGUI A   &hml LALT R   &hml LCTRL S  &hml LSHFT T  &kp G           &none   &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O    &kp C_BRI_UP
-&kp C_VOL_DN  &ltl BUTTON Z &hml RALT X   &kp C         &kp D         &kp V           &none   &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &ltr BUTTON FSLH &kp C_BRI_DN
-&none         &kp C_MUTE    &kp F13       &tlt MEDIA ESC &tlt NAV SPACE &tlt MOUSE TAB &none  &tlt SYM ENTER &tlt NUM BSPC &tlt FUN DEL  &kp F14        &mo SHORTCUTS
+&kp LC(UP)    &kp LG(SPACE) &kp LG(LS(N4)) &kp C_PP     &kp LC(LEFT)  &kp LC(RIGHT)   &none   &kp LC(DOWN)  &kp LG(LBKT)  &kp LG(RBKT)  &kp LC(LG(D))  &kp LG(LS(N5)) &kp LC(LG(F))
+&kp C_VOL_UP  &kp Q         &kp W         &kp F         &kp P         &kp B           &none   &kp J         &kp L         &kp U         &kp Y          &kp SQT        &kp C_PREV
+&kp C_VOL_DN  &hml LGUI A   &hml LALT R   &hml LCTRL S  &hml LSHFT T  &kp G           &none   &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O    &kp C_NEXT
+&kp C_MUTE    &ltl BUTTON Z &hml RALT X   &kp C         &kp D         &kp V           &none   &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &ltr BUTTON FSLH &kp C_BRI_UP
+&none         &kp F14       &kp F13       &tlt MEDIA ESC &tlt NAV SPACE &tlt MOUSE TAB &none  &tlt SYM ENTER &tlt NUM BSPC &tlt FUN DEL  &kp C_BRI_DN   &mo SHORTCUTS
             >;
             display-name = "Base";
         };

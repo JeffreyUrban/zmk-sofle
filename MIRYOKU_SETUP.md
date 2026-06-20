@@ -92,14 +92,18 @@ keymap live — but this `.keymap` file remains the source of truth.
 
 ## Tuning notes
 
-You picked "full Miryoku, tune later." Likely first adjustments:
+You picked "full Miryoku, tune later." See **[TUNING.md](TUNING.md)** for the
+home-row-mod timing knobs, thumb-layer timing, pointer speed, and a map of
+what's where in the keymap.
 
-- **Home-row mod timing:** `tapping-term-ms` (200), `quick-tap-ms` (175),
-  `require-prior-idle-ms` (125) in the `hml`/`hmr` behaviors. Raise the term if
-  mods feel hard to trigger; lower the prior-idle if quick mod-chords get eaten.
-- **Swap a layer:** the MOUSE layer is the usual candidate to repurpose once you
-  settle in — each layer is an independent block in the keymap.
-- **Extra-key assignments:** all in the Base layer; the function layers leave
+Quick orientation:
+
+- **Home-row mod timing** is the setting you're most likely to touch (`hml`/`hmr`
+  behaviors). Details and a symptom→fix table are in TUNING.md.
+- The board's **pointer/scroll device is not populated**, so the Mouse layer's
+  keyboard-driven mouse is your only on-keyboard pointing — keep it; tune its
+  speed via the `ZMK_POINTING_*` defines if needed.
+- **Extra-key assignments** all live in the Base layer; the function layers leave
   them transparent, so editing Base changes them everywhere.
 
 Soft-off (BLE deep sleep) is the combo **Q + R + Z** held ~2 s.

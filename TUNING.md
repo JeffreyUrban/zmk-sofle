@@ -75,20 +75,32 @@ or trackpad. The Miryoku **Mouse** layer still works fully — `&mmv` (move),
 keyboard, independent of any physical sensor. That makes it your **only**
 on-keyboard pointing, so it's worth keeping rather than repurposing.
 
-If it feels too slow or too fast, tune the pointer speed/acceleration (these
-already live near the top of the keymap):
+If it feels too slow or too fast, the cursor speed is set by a **three-stage
+chain**, all of which act on the keyboard mouse (there's no physical sensor; in
+ZMK the `mmv_input_listener`'s `device` is the `&mmv` behavior itself, so every
+stage below applies to the Mouse layer):
 
 ```
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200   // cursor speed (stock 600)
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 25     // scroll speed (stock 10)
+// 1. base magnitude per move/scroll tick
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200   // stock 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 25     // stock 10
 
-&mmv { time-to-max-speed-ms = <500>; acceleration-exponent = <1>; ... };  // ramp-up
-&msc { time-to-max-speed-ms = <100>; ... };
+// 2. acceleration ramp (how fast it reaches full speed)
+&mmv { time-to-max-speed-ms = <500>; acceleration-exponent = <1>; trigger-period-ms = <16>; };
+&msc { time-to-max-speed-ms = <100>; acceleration-exponent = <1>; };
+
+// 3. final output multiplier (mul/div) — currently 2x on both
+&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
+&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 ```
 
-Raise `MOVE_VAL` for a faster cursor; lower `time-to-max-speed-ms` for a snappier
-ramp. The `zip_xy_scaler` / `zip_scroll_scaler` input processors only affect a
-*physical* pointer, so they're inert here and can be ignored.
+Effective speed ≈ `MOVE_VAL` × the scaler (2×), shaped by the accel ramp. To
+adjust:
+
+- **Faster / slower cursor:** raise or lower `MOVE_VAL`, **or** change the scaler
+  (e.g. `<&zip_xy_scaler 1 1>` removes the 2× and halves the current speed).
+- **Snappier acceleration:** lower `time-to-max-speed-ms`.
+- **Scroll:** the same three stages with `SCRL_VAL` / `&msc` / `zip_scroll_scaler`.
 
 > If you do use an external mouse/trackpad full-time and want the layer back for
 > something else (window snapping, app launchers, a macro pad), it's the

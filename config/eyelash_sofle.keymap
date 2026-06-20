@@ -1,48 +1,44 @@
 /*
- * Eyelash Sofle - Miryoku (Colemak Mod-DH) + macOS shortcut surface
- * -----------------------------------------------------------------
- * 36-key Miryoku core:
- *   - 30 alphas on the inner 5 columns x 3 rows of each hand
- *   - 6 thumb layer-taps (MEDIA/NAV/MOUSE left, SYM/NUM/FUN right)
- *   - GACS home-row mods (GUI / Alt / Ctrl / Shift) with positional hold-tap
+ * Sofle (58-key) - Miryoku (Colemak Mod-DH) + macOS shortcut surface
+ * =================================================================
+ * Physical board: standard 58-key Sofle -- 6 cols x 4 rows per hand (48) +
+ * 5 thumb keys per hand (10). NO encoder, NO center arrow pad, NO mute key
+ * (those firmware positions exist on the PCB but are unpopulated here).
+ * Dead matrix positions 6, 19, 32, 45, 52, 58 are &none on every layer.
  *
- * Layers: 0 BASE  1 NAV  2 MOUSE  3 MEDIA  4 NUM  5 SYM  6 FUN  7 BUTTON
+ * THE 36-KEY MIRYOKU CORE (does all typing):
+ *   - 30 alphas on the inner 5 cols x 3 rows of each hand
+ *   - 6 thumb layer-taps on the INNER 3 of each 5-key thumb cluster:
+ *       left  55/56/57 = MEDIA/NAV/MOUSE   right 59/60/61 = SYM/NUM/FUN
+ *   - GACS home-row mods (positional hold-tap -- see DEVIATIONS D1)
+ * Layers: 0 BASE 1 NAV 2 MOUSE 3 MEDIA 4 NUM 5 SYM 6 FUN 7 BUTTON 8 SHORTCUTS
  *
- * Everything outside the 36-key core (number row, outer columns, the center
- * cluster, the encoder push, and the outer thumb keys) is a macOS shortcut
- * surface and is transparent on the function layers so it works everywhere.
+ * THE 22 EXTRA KEYS (non-typing, act on macOS), in two tiers:
+ *   TIER 1 -- bare keys: instant, no-layer actions for when you are NOT
+ *     typing (one hand on the mouse, or dictating). Number row, outer
+ *     columns, and the OUTER 2 thumb keys of each cluster (53/54, 62/63).
+ *   TIER 2 -- hold the outer-most right thumb (63) for the SHORTCUTS layer:
+ *     window tiling + system actions, for when both hands are on the board.
  *
- * Clipboard, dictation, OCR, screenshots etc. assume macOS. See SETUP notes
- * in the repo for the host-side shortcuts you need to bind.
+ * macOS host-side setup needed (see MIRYOKU_SETUP.md):
+ *   F13 = Dictation, F14 = OCR -> bind in System Settings / your OCR app.
+ *   Window tiling uses Ctrl+Opt+Cmd + arrows/F/C -> reassign the native
+ *   "Move & Resize" menu items to these via Keyboard Shortcuts > App
+ *   Shortcuts (native tiling's Globe-key defaults can't be sent by a
+ *   non-Apple keyboard).
  *
  * =========================================================================
- * DEVIATIONS FROM CANONICAL MIRYOKU (manna-harbour/miryoku_zmk)
- * Tracked deliberately so each change is traceable to a reason. The 36-key
- * layer *content* matches canonical; these are the intentional differences.
- * (See MIRYOKU_SETUP.md "Deviations" for the prose version.)
- *
- *  D1. Home-row mods and the Z// (BUTTON) and thumb tap-holds use tuned
- *      positional hold-taps (flavor "balanced" + hold-trigger-key-positions
- *      + require-prior-idle-ms) instead of canonical's plain `u_mt`/`u_lt`
- *      ("tap-preferred", no positional guard).  WHY: identical tap/hold
- *      meaning but far fewer misfires while typing. This is the one place we
- *      chose modern best-practice over a literal copy. Revert the `hml`/`hmr`/
- *      `ltl`/`ltr`/`tlt` behaviors below to `tap-preferred` for stock feel.
- *
- *  D2. Layer-management meta keys (canonical `&u_to_U_BASE/TAP/EXTRA`, the
- *      layer-lock tap-dances, and double-tap base switching) are `&none`.
- *      WHY: this build has a single fixed base (Colemak-DH); no alternate
- *      BASE/TAP/EXTRA layers exist to switch to. `&bootloader` is kept on the
- *      top-left key of each function layer, as canonical does.
- *
- *  D3. Clipboard = the macOS variant (Cmd-based: ⌘Z/⌘X/⌘C/⌘V/⇧⌘Z), i.e.
- *      canonical's MIRYOKU_CLIPBOARD_MAC. WHY: this is a macOS keyboard.
- *
- * EXTENSIONS (beyond the 36-key Miryoku spec, which is silent on extra keys):
- *  E1. The eyelash Sofle's extra hardware -- number row, center cluster,
- *      outer columns, encoder (+push), outer thumbs -- carries a macOS
- *      shortcut surface on BASE and is `&trans` on the function layers.
- *  E2. Encoder = volume (runtime-sensor-rotate), kept from the stock config.
+ * DEVIATIONS FROM CANONICAL MIRYOKU (manna-harbour/miryoku_zmk) -- tracked
+ *  D1. Home-row mods + Z// (BUTTON) + thumb tap-holds use tuned positional
+ *      hold-taps ("balanced" + hold-trigger-key-positions + prior-idle)
+ *      instead of canonical "tap-preferred" u_mt/u_lt. WHY: same tap/hold
+ *      meaning, far fewer misfires. Revert those behaviors to "tap-preferred"
+ *      for stock feel.
+ *  D2. Layer-management meta keys (&u_to_U_*, layer-lock tap-dances) -> &none;
+ *      single fixed Colemak-DH base. &bootloader kept on each layer.
+ *  D3. Clipboard = macOS variant (Cmd-based), per MIRYOKU_CLIPBOARD_MAC.
+ * EXTENSIONS (beyond Miryoku's 36-key spec):
+ *  E1. The 22 extra Sofle keys carry the macOS shortcut surface above.
  * =========================================================================
  */
 
@@ -52,7 +48,6 @@
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
-#include <behaviors/runtime-sensor-rotate.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
@@ -70,22 +65,19 @@
 #define SYM    5
 #define FUN    6
 #define BUTTON 7
+#define SHORTCUTS 8
 
-// ---- Positional hold-tap key groups (64-key physical positions) ----------
-// Left alphas / right alphas / the 6 thumb keys. Used so a home-row mod only
+// ---- Positional hold-tap key groups (matrix positions) -------------------
+// Left alphas / right alphas / the 6 Miryoku thumb keys. A home-row mod only
 // becomes a modifier when paired with a key on the *opposite* hand or a thumb.
 #define KEYS_L 14 15 16 17 18 27 28 29 30 31 40 41 42 43 44
 #define KEYS_R 20 21 22 23 24 33 34 35 36 37 46 47 48 49 50
 #define KEYS_T 55 56 57 59 60 61
 
-&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
-
-&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
-
 &msc {
-    acceleration-exponent = <1>;      // 0
-    time-to-max-speed-ms = <100>;       // 300
-    delay-ms = <0>;                   // 0
+    acceleration-exponent = <1>;
+    time-to-max-speed-ms = <100>;
+    delay-ms = <0>;
 };
 
 &mmv {
@@ -94,37 +86,16 @@
     trigger-period-ms = <16>;
 };
 
+&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
+&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
+
 &soft_off { hold-time-ms = <2000>; };
 
 / {
-    scroll_encoder: scroll_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
-        tap-ms = <100>;
-    };
-
     behaviors {
-        // Encoder: volume (cw = up, ccw = down), second channel unused.
-        rsr_vol: rsr_vol {
-            compatible = "zmk,behavior-runtime-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            tap-ms = <5>;
-            cw-binding = <&kp C_VOL_UP>;
-            ccw-binding = <&kp C_VOL_DN>;
-        };
-
-        rsr_trans: rsr_trans {
-            compatible = "zmk,behavior-runtime-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            tap-ms = <0>;
-        };
-
-        // Home-row mods, left hand. hold = modifier, tap = key.
-        // [D1] Deviates from canonical `u_mt` (tap-preferred, no positional
-        // guard): tuned positional hold-tap for fewer typing misfires. See
-        // the DEVIATIONS block in the header.
+        // [D1] Home-row mods, left hand. hold = modifier, tap = key.
+        // Deviates from canonical "tap-preferred" u_mt: positional + idle
+        // guard for fewer misfires (see header).
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -137,7 +108,6 @@
             bindings = <&kp>, <&kp>;
         };
 
-        // Home-row mods, right hand.
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -150,10 +120,7 @@
             bindings = <&kp>, <&kp>;
         };
 
-        // Layer-tap on the outer bottom keys (Z / SLASH), left/right variants.
-        // hold = momentary layer, tap = key. Positional like the home-row mods.
-        // [D1] Deviates from canonical `u_lt` (tap-preferred) for the same
-        // misfire reason as the home-row mods.
+        // [D1] Layer-tap on the outer bottom keys (Z / SLASH).
         ltl: layer_tap_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -178,10 +145,7 @@
             bindings = <&mo>, <&kp>;
         };
 
-        // Thumb layer-taps. No positional restriction (held deliberately and
-        // often combined with same-hand keys).
-        // [D1] Deviates from canonical `u_lt` (tap-preferred): "balanced"
-        // flavor. Thumbs rarely misfire, so this is the mildest of the D1 set.
+        // [D1] Thumb layer-taps. No positional restriction (deliberate).
         tlt: thumb_layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -264,8 +228,7 @@
     combos {
         compatible = "zmk,combos";
 
-        // Hold Q + R + Z together for ~2s to power the keyboard off (BLE deep
-        // sleep; wake with the reset/power button or any key on USB).
+        // Hold Q + R + Z together ~2s -> BLE deep sleep (wake with reset).
         softoff {
             bindings = <&soft_off>;
             key-positions = <14 28 40>;
@@ -276,127 +239,120 @@
         compatible = "zmk,keymap";
 
         // ============================ BASE ============================
-        // Colemak Mod-DH with home-row mods + Miryoku thumb layer-taps.
-        // Extras: number row, arrow cluster (center), macOS shortcuts on the
-        // outer columns / lower keys / encoder push.
+        // Colemak-DH core + Miryoku thumbs. Extras = TIER-1 macOS actions:
+        //   Top L : MissCtrl Expose Space< Space> Spotlight Look-up
+        //   Top R : Prev PlayPause Next Screenshot-region -tool Fullscreen
+        //   Outer : (L) Back VolUp VolDn   (R) Fwd BriUp BriDn
+        //   Thumbs: 53 Mute  54 Dictation  62 OCR  63 hold->SHORTCUTS
         layer0 {
             bindings = <
-&kp ESC        &kp N1         &kp N2          &kp N3        &kp N4         &kp N5            &kp UP       &kp N6     &kp N7        &kp N8     &kp N9         &kp N0          &kp BSPC
-&kp LC(UP)     &kp Q          &kp W           &kp F         &kp P          &kp B             &kp DOWN     &kp J      &kp L         &kp U      &kp Y          &kp SQT         &kp F13
-&kp LG(SPACE)  &hml LGUI A    &hml LALT R     &hml LCTRL S  &hml LSHFT T   &kp G             &kp LEFT     &kp M      &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I  &hmr RGUI O     &kp F14
-&kp LC(LG(SPACE)) &ltl BUTTON Z &hml RALT X   &kp C         &kp D          &kp V             &kp RIGHT    &kp K      &kp H         &kp COMMA  &hmr RALT DOT  &ltr BUTTON FSLH &kp LC(LG(F))
-&kp C_MUTE     &kp C_BRI_DN   &kp C_BRI_UP    &tlt MEDIA ESC &tlt NAV SPACE &tlt MOUSE TAB   &kp ENTER    &tlt SYM ENTER &tlt NUM BSPC &tlt FUN DEL &kp LG(LS(N4)) &kp LG(LS(N5))
+&kp LC(UP)    &kp LC(DOWN)  &kp LC(LEFT)  &kp LC(RIGHT) &kp LG(SPACE) &kp LC(LG(D))   &none   &kp C_PREV    &kp C_PP      &kp C_NEXT    &kp LG(LS(N4)) &kp LG(LS(N5)) &kp LC(LG(F))
+&kp LG(LBKT)  &kp Q         &kp W         &kp F         &kp P         &kp B           &none   &kp J         &kp L         &kp U         &kp Y          &kp SQT        &kp LG(RBKT)
+&kp C_VOL_UP  &hml LGUI A   &hml LALT R   &hml LCTRL S  &hml LSHFT T  &kp G           &none   &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O    &kp C_BRI_UP
+&kp C_VOL_DN  &ltl BUTTON Z &hml RALT X   &kp C         &kp D         &kp V           &none   &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &ltr BUTTON FSLH &kp C_BRI_DN
+&none         &kp C_MUTE    &kp F13       &tlt MEDIA ESC &tlt NAV SPACE &tlt MOUSE TAB &none  &tlt SYM ENTER &tlt NUM BSPC &tlt FUN DEL  &kp F14        &mo SHORTCUTS
             >;
-
-            sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "Base";
         };
 
         // ============================ NAV =============================
-        // Left hand = mods (for chording), right hand = navigation + clipboard.
         layer_1 {
             bindings = <
-&trans      &trans      &trans      &trans      &trans      &trans         &trans     &trans          &trans       &trans     &trans      &trans      &trans
-&trans      &bootloader &none       &none       &none       &none          &trans     &kp LS(LG(Z))   &kp LG(V)    &kp LG(C)  &kp LG(X)   &kp LG(Z)   &trans
-&trans      &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none          &trans     &u_caps_word    &kp LEFT     &kp DOWN   &kp UP      &kp RIGHT   &trans
-&trans      &none       &kp RALT    &none       &none       &none          &trans     &kp INS         &kp HOME     &kp PG_DN  &kp PG_UP   &kp END     &trans
-&trans      &trans      &trans      &none       &none       &none          &trans     &kp ENTER       &kp BSPC     &kp DEL    &trans      &trans
+&trans  &trans       &trans     &trans      &trans      &trans     &none   &trans          &trans     &trans     &trans      &trans     &trans
+&trans  &bootloader  &none      &none       &none       &none      &none   &kp LS(LG(Z))   &kp LG(V)  &kp LG(C)  &kp LG(X)   &kp LG(Z)  &trans
+&trans  &kp LGUI     &kp LALT   &kp LCTRL   &kp LSHFT   &none      &none   &u_caps_word    &kp LEFT   &kp DOWN   &kp UP      &kp RIGHT  &trans
+&trans  &none        &kp RALT   &none       &none       &none      &none   &kp INS         &kp HOME   &kp PG_DN  &kp PG_UP   &kp END    &trans
+&none   &trans       &trans     &none       &none       &none      &none   &kp ENTER       &kp BSPC   &kp DEL    &trans      &trans
             >;
-
-            sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "Nav";
         };
 
         // =========================== MOUSE ============================
-        // Left hand = mods, right hand = pointer / wheel + clipboard.
-        // Thumbs = mouse buttons.
         layer_2 {
             bindings = <
-&trans      &trans      &trans      &trans      &trans      &trans         &trans     &trans          &trans          &trans          &trans          &trans          &trans
-&trans      &bootloader &none       &none       &none       &none          &trans     &kp LS(LG(Z))   &kp LG(V)       &kp LG(C)       &kp LG(X)       &kp LG(Z)       &trans
-&trans      &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none          &trans     &none           &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &trans
-&trans      &none       &kp RALT    &none       &none       &none          &trans     &none           &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT &trans
-&trans      &trans      &trans      &none       &none       &none          &trans     &mkp MB2        &mkp MB1        &mkp MB3        &trans          &trans
+&trans  &trans       &trans     &trans      &trans      &trans     &none   &trans          &trans          &trans         &trans          &trans     &trans
+&trans  &bootloader  &none      &none       &none       &none      &none   &kp LS(LG(Z))   &kp LG(V)       &kp LG(C)      &kp LG(X)       &kp LG(Z)  &trans
+&trans  &kp LGUI     &kp LALT   &kp LCTRL   &kp LSHFT   &none      &none   &none           &mmv MOVE_LEFT  &mmv MOVE_DOWN &mmv MOVE_UP    &mmv MOVE_RIGHT &trans
+&trans  &none        &kp RALT   &none       &none       &none      &none   &none           &msc SCRL_LEFT  &msc SCRL_DOWN &msc SCRL_UP    &msc SCRL_RIGHT &trans
+&none   &trans       &trans     &none       &none       &none      &none   &mkp MB2        &mkp MB1        &mkp MB3       &trans          &trans
             >;
-
-            sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "Mouse";
         };
 
         // =========================== MEDIA ============================
-        // Left hand = mods, right hand = volume / transport / RGB + output.
         layer_3 {
             bindings = <
-&trans      &trans      &trans      &trans      &trans      &trans         &trans     &trans          &trans          &trans          &trans          &trans          &trans
-&trans      &bootloader &none       &none       &none       &none          &trans     &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &trans
-&trans      &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none          &trans     &ext_power EP_TOG &kp C_PREV    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &trans
-&trans      &none       &kp RALT    &none       &none       &none          &trans     &u_out_tog      &u_bt_sel_0     &u_bt_sel_1     &u_bt_sel_2     &u_bt_sel_3     &trans
-&trans      &trans      &trans      &none       &none       &none          &trans     &kp C_STOP      &kp C_PP        &kp C_MUTE      &trans          &trans
+&trans  &trans       &trans     &trans      &trans      &trans     &none   &trans            &trans          &trans          &trans          &trans          &trans
+&trans  &bootloader  &none      &none       &none       &none      &none   &rgb_ug RGB_TOG   &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &trans
+&trans  &kp LGUI     &kp LALT   &kp LCTRL   &kp LSHFT   &none      &none   &ext_power EP_TOG &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &trans
+&trans  &none        &kp RALT   &none       &none       &none      &none   &u_out_tog        &u_bt_sel_0     &u_bt_sel_1     &u_bt_sel_2     &u_bt_sel_3     &trans
+&none   &trans       &trans     &none       &none       &none      &none   &kp C_STOP        &kp C_PP        &kp C_MUTE      &trans          &trans
             >;
-
-            sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "Media";
         };
 
         // ============================ NUM =============================
-        // Left hand = numpad + symbols, right hand = mods.
         layer_4 {
             bindings = <
-&trans      &trans      &trans      &trans      &trans      &trans         &trans     &trans     &trans     &trans     &trans     &trans      &trans
-&trans      &kp LBKT    &kp N7      &kp N8      &kp N9      &kp RBKT       &trans     &none      &none      &none      &none      &bootloader &trans
-&trans      &kp SEMI    &kp N4      &kp N5      &kp N6      &kp EQUAL      &trans     &none      &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI    &trans
-&trans      &kp GRAVE   &kp N1      &kp N2      &kp N3      &kp BSLH       &trans     &none      &none      &none      &kp RALT   &none       &trans
-&trans      &trans      &trans      &kp DOT     &kp N0      &kp MINUS      &trans     &none      &none      &none      &trans     &trans
+&trans  &trans     &trans   &trans   &trans   &trans     &none   &trans   &trans     &trans     &trans     &trans      &trans
+&trans  &kp LBKT   &kp N7   &kp N8   &kp N9   &kp RBKT   &none   &none    &none      &none      &none      &bootloader &trans
+&trans  &kp SEMI   &kp N4   &kp N5   &kp N6   &kp EQUAL  &none   &none    &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI    &trans
+&trans  &kp GRAVE  &kp N1   &kp N2   &kp N3   &kp BSLH   &none   &none    &none      &none      &kp RALT   &none       &trans
+&none   &trans     &trans   &kp DOT  &kp N0   &kp MINUS  &none   &none    &none      &none      &trans     &trans
             >;
-
-            sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "Num";
         };
 
         // ============================ SYM =============================
-        // Left hand = symbols, right hand = mods.
         layer_5 {
             bindings = <
-&trans      &trans      &trans      &trans      &trans      &trans         &trans     &trans     &trans     &trans     &trans     &trans      &trans
-&trans      &kp LBRC    &kp AMPS    &kp ASTRK   &kp LPAR    &kp RBRC       &trans     &none      &none      &none      &none      &bootloader &trans
-&trans      &kp COLON   &kp DLLR    &kp PRCNT   &kp CARET   &kp PLUS       &trans     &none      &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI    &trans
-&trans      &kp TILDE   &kp EXCL    &kp AT      &kp HASH    &kp PIPE       &trans     &none      &none      &none      &kp RALT   &none       &trans
-&trans      &trans      &trans      &kp LPAR    &kp RPAR    &kp UNDER      &trans     &none      &none      &none      &trans     &trans
+&trans  &trans     &trans     &trans     &trans    &trans     &none   &trans   &trans     &trans     &trans     &trans      &trans
+&trans  &kp LBRC   &kp AMPS   &kp ASTRK  &kp LPAR  &kp RBRC   &none   &none    &none      &none      &none      &bootloader &trans
+&trans  &kp COLON  &kp DLLR   &kp PRCNT  &kp CARET &kp PLUS   &none   &none    &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI    &trans
+&trans  &kp TILDE  &kp EXCL   &kp AT     &kp HASH  &kp PIPE   &none   &none    &none      &none      &kp RALT   &none       &trans
+&none   &trans     &trans     &kp LPAR   &kp RPAR  &kp UNDER  &none   &none    &none      &none      &trans     &trans
             >;
-
-            sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "Sym";
         };
 
         // ============================ FUN =============================
-        // Left hand = function keys + system, right hand = mods.
         layer_6 {
             bindings = <
-&trans      &trans      &trans      &trans      &trans      &trans         &trans     &trans     &trans     &trans     &trans     &trans      &trans
-&trans      &kp F12     &kp F7      &kp F8      &kp F9      &kp PSCRN      &trans     &none      &none      &none      &none      &bootloader &trans
-&trans      &kp F11     &kp F4      &kp F5      &kp F6      &kp SLCK       &trans     &none      &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI    &trans
-&trans      &kp F10     &kp F1      &kp F2      &kp F3      &kp PAUSE_BREAK &trans    &none      &none      &none      &kp RALT   &none       &trans
-&trans      &trans      &trans      &kp K_APP   &kp SPACE   &kp TAB        &trans     &none      &none      &none      &trans     &trans
+&trans  &trans    &trans   &trans   &trans   &trans          &none   &trans   &trans     &trans     &trans     &trans      &trans
+&trans  &kp F12   &kp F7   &kp F8   &kp F9   &kp PSCRN       &none   &none    &none      &none      &none      &bootloader &trans
+&trans  &kp F11   &kp F4   &kp F5   &kp F6   &kp SLCK        &none   &none    &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI    &trans
+&trans  &kp F10   &kp F1   &kp F2   &kp F3   &kp PAUSE_BREAK &none   &none    &none      &none      &kp RALT   &none       &trans
+&none   &trans    &trans   &kp K_APP &kp SPACE &kp TAB        &none   &none    &none      &none      &trans     &trans
             >;
-
-            sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "Fun";
         };
 
         // =========================== BUTTON ===========================
-        // One-handed editing: clipboard on the alphas, mods on home row,
-        // mouse buttons on the thumbs. Reached by holding Z or SLASH.
         layer_7 {
             bindings = <
-&trans      &trans      &trans      &trans      &trans      &trans         &trans     &trans          &trans      &trans     &trans      &trans          &trans
-&trans      &kp LG(Z)   &kp LG(X)   &kp LG(C)   &kp LG(V)   &kp LS(LG(Z))  &trans     &kp LS(LG(Z))   &kp LG(V)   &kp LG(C)  &kp LG(X)   &kp LG(Z)       &trans
-&trans      &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none          &trans     &none           &kp RSHFT   &kp RCTRL  &kp RALT    &kp RGUI        &trans
-&trans      &kp LG(Z)   &kp LG(X)   &kp LG(C)   &kp LG(V)   &kp LS(LG(Z))  &trans     &kp LS(LG(Z))   &kp LG(V)   &kp LG(C)  &kp LG(X)   &kp LG(Z)       &trans
-&trans      &trans      &trans      &mkp MB3    &mkp MB1    &mkp MB2       &trans     &mkp MB2        &mkp MB1    &mkp MB3   &trans      &trans
+&trans  &trans     &trans     &trans     &trans     &trans          &none   &trans          &trans     &trans     &trans     &trans     &trans
+&trans  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(Z))   &none   &kp LS(LG(Z))   &kp LG(V)  &kp LG(C)  &kp LG(X)  &kp LG(Z)  &trans
+&trans  &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none           &none   &none           &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI   &trans
+&trans  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(Z))   &none   &kp LS(LG(Z))   &kp LG(V)  &kp LG(C)  &kp LG(X)  &kp LG(Z)  &trans
+&none   &trans     &trans     &mkp MB3   &mkp MB1   &mkp MB2        &none   &mkp MB2        &mkp MB1   &mkp MB3   &trans     &trans
             >;
-
-            sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "Button";
+        };
+
+        // ========================= SHORTCUTS ==========================
+        // Held via outer-right thumb (pos 63). Left hand = native window
+        // tiling (Ctrl+Opt+Cmd + arrows/F/C -- reassign the Move & Resize
+        // menu items to these in System Settings > Keyboard Shortcuts).
+        // Right hand = system actions.
+        layer_8 {
+            bindings = <
+&trans  &trans              &trans                &trans                &trans                 &trans              &none   &trans          &trans         &trans     &trans     &trans  &trans
+&trans  &none               &none                 &kp LC(LA(LG(UP)))    &none                  &none               &none   &kp LG(LA(ESC)) &kp LG(LS(T))  &kp LG(TAB) &kp LC(LG(Q)) &kp LC(LG(SPACE)) &trans
+&trans  &kp LC(LA(LG(C)))   &kp LC(LA(LG(LEFT)))  &kp LC(LA(LG(DOWN)))  &kp LC(LA(LG(RIGHT)))  &kp LC(LA(LG(F)))   &none   &kp LG(MINUS)   &kp LG(EQUAL)  &none      &none      &none   &trans
+&trans  &none               &none                 &none                 &none                  &none               &none   &none           &none          &none      &none      &none   &trans
+&none   &trans              &trans                &none                 &none                  &none               &none   &none           &none          &none      &trans     &trans
+            >;
+            display-name = "Shortcuts";
         };
     };
 };

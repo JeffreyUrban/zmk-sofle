@@ -111,10 +111,9 @@ adjust:
 
 ## 4. Other knobs worth knowing
 
-- **Encoder** — currently volume (cw = up, ccw = down) on every layer, via the
-  `rsr_vol` behavior. To make it do something else on a specific layer, change
-  that layer's `sensor-bindings`. A `scroll_encoder` behavior is already defined
-  if you'd prefer scroll.
+- **No encoder** — this build has no rotary encoder, so volume/media live on
+  bare keys (left outer column + thumbs) and on the **Media** layer. The
+  encoder sensor bindings have been removed from the keymap.
 - **Soft-off combo** — `Q + R + Z` held ~2 s (deep sleep). Move it by editing
   `key-positions` in the `softoff` combo, or remove the combo block entirely.
 - **RGB underglow** — controls are on the **Media** layer; defaults

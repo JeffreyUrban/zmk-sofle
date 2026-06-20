@@ -14,6 +14,36 @@
  *
  * Clipboard, dictation, OCR, screenshots etc. assume macOS. See SETUP notes
  * in the repo for the host-side shortcuts you need to bind.
+ *
+ * =========================================================================
+ * DEVIATIONS FROM CANONICAL MIRYOKU (manna-harbour/miryoku_zmk)
+ * Tracked deliberately so each change is traceable to a reason. The 36-key
+ * layer *content* matches canonical; these are the intentional differences.
+ * (See MIRYOKU_SETUP.md "Deviations" for the prose version.)
+ *
+ *  D1. Home-row mods and the Z// (BUTTON) and thumb tap-holds use tuned
+ *      positional hold-taps (flavor "balanced" + hold-trigger-key-positions
+ *      + require-prior-idle-ms) instead of canonical's plain `u_mt`/`u_lt`
+ *      ("tap-preferred", no positional guard).  WHY: identical tap/hold
+ *      meaning but far fewer misfires while typing. This is the one place we
+ *      chose modern best-practice over a literal copy. Revert the `hml`/`hmr`/
+ *      `ltl`/`ltr`/`tlt` behaviors below to `tap-preferred` for stock feel.
+ *
+ *  D2. Layer-management meta keys (canonical `&u_to_U_BASE/TAP/EXTRA`, the
+ *      layer-lock tap-dances, and double-tap base switching) are `&none`.
+ *      WHY: this build has a single fixed base (Colemak-DH); no alternate
+ *      BASE/TAP/EXTRA layers exist to switch to. `&bootloader` is kept on the
+ *      top-left key of each function layer, as canonical does.
+ *
+ *  D3. Clipboard = the macOS variant (Cmd-based: ⌘Z/⌘X/⌘C/⌘V/⇧⌘Z), i.e.
+ *      canonical's MIRYOKU_CLIPBOARD_MAC. WHY: this is a macOS keyboard.
+ *
+ * EXTENSIONS (beyond the 36-key Miryoku spec, which is silent on extra keys):
+ *  E1. The eyelash Sofle's extra hardware -- number row, center cluster,
+ *      outer columns, encoder (+push), outer thumbs -- carries a macOS
+ *      shortcut surface on BASE and is `&trans` on the function layers.
+ *  E2. Encoder = volume (runtime-sensor-rotate), kept from the stock config.
+ * =========================================================================
  */
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
@@ -92,6 +122,9 @@
         };
 
         // Home-row mods, left hand. hold = modifier, tap = key.
+        // [D1] Deviates from canonical `u_mt` (tap-preferred, no positional
+        // guard): tuned positional hold-tap for fewer typing misfires. See
+        // the DEVIATIONS block in the header.
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -119,6 +152,8 @@
 
         // Layer-tap on the outer bottom keys (Z / SLASH), left/right variants.
         // hold = momentary layer, tap = key. Positional like the home-row mods.
+        // [D1] Deviates from canonical `u_lt` (tap-preferred) for the same
+        // misfire reason as the home-row mods.
         ltl: layer_tap_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -145,6 +180,8 @@
 
         // Thumb layer-taps. No positional restriction (held deliberately and
         // often combined with same-hand keys).
+        // [D1] Deviates from canonical `u_lt` (tap-preferred): "balanced"
+        // flavor. Thumbs rarely misfire, so this is the mildest of the D1 set.
         tlt: thumb_layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;

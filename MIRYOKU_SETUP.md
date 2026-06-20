@@ -30,6 +30,29 @@ committed to [`keymap-drawer/`](keymap-drawer/).
 Clipboard keys (Nav/Mouse/Button layers) are macOS **⌘**-based
 (⌘Z / ⌘X / ⌘C / ⌘V / ⇧⌘Z).
 
+## Deviations from canonical Miryoku
+
+The 36-key layer *content* is ported faithfully from
+[manna-harbour/miryoku_zmk](https://github.com/manna-harbour/miryoku_zmk)
+(Colemak-DH base, the Nav/Mouse/Media/Num/Sym/Fun/Button layers, the Media-layer
+Shift-morph system keys, the Mac clipboard). The differences below are
+**intentional and tracked** — each is tagged in the keymap (`[D1]`…/`E1`…) next
+to the code it affects.
+
+| Tag | Change | Why |
+|---|---|---|
+| **D1** | Home-row mods, the `Z`/`/` (Button) taps, and the thumb layer-taps use tuned **positional hold-taps** (`balanced` flavor, `hold-trigger-key-positions`, `require-prior-idle-ms`) instead of canonical `u_mt`/`u_lt` (`tap-preferred`, no positional guard). | Same tap/hold meaning, far fewer misfires while typing. The one place modern best-practice was chosen over a literal copy. To get stock feel, set those behaviors to `flavor = "tap-preferred"` and drop the positional/idle properties. |
+| **D2** | Layer-management meta keys (canonical `&u_to_U_BASE/TAP/EXTRA`, layer-lock tap-dances, double-tap base switching) are `&none`. `&bootloader` is kept on each function layer's top-left key (as canonical). | This build has a single fixed base (Colemak-DH); there are no alternate BASE/TAP/EXTRA layers to switch to. |
+| **D3** | Clipboard = the macOS variant (⌘-based). | It's a macOS keyboard (canonical's `MIRYOKU_CLIPBOARD_MAC`). |
+
+**Extensions** (additive — Miryoku's 36-key spec is silent on extra keys, so
+these aren't changes to it):
+
+| Tag | Addition |
+|---|---|
+| **E1** | The eyelash Sofle's extra hardware (number row, center cluster, outer columns, encoder + push, outer thumbs) carries the macOS shortcut surface below, transparent on the function layers. |
+| **E2** | Encoder = volume (kept from the stock config). |
+
 ## The extra keys (macOS shortcut surface)
 
 Everything outside the 36-key core is transparent on the function layers, so

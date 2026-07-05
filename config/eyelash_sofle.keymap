@@ -274,7 +274,7 @@
 &kp C_VOL_UP  &kp Q          &kp W           &kp F         &kp P         &kp B            &none  &kp J         &kp L         &kp U         &kp Y          &kp SQT         &kp C_PREV
 &kp C_VOL_DN  &hml LGUI A    &hml LALT R     &hml LCTRL S  &hml LSHFT T  &kp G            &none  &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O     &kp C_NEXT
 &kp C_MUTE    &ltl 6 Z       &hml RALT X     &kp C         &kp D         &kp V            &none  &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &ltr 6 FSLH     &kp C_BRI_UP
-&none         &kp F14        &kp F13         &tlt 4 ESC    &tlt 2 SPACE  &tlt 1 TAB       &none  &tlt 1 ENTER  &tlt 2 BSPC   &tlt 5 DEL    &kp C_BRI_DN   &mo 7
+&none         &kp F14        &kp F13         &tlt 4 ESC    &tlt 1 SPACE  &tlt 2 TAB       &none  &tlt 2 ENTER  &tlt 1 BSPC   &tlt 5 DEL    &kp C_BRI_DN   &mo 7
             >;
 
             display-name = "Base";

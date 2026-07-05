@@ -268,13 +268,13 @@
         //   Top R : AppExpose Back Fwd Look-up Screenshot-tool Fullscreen
         //   R-out : Prev Next BriUp          R-thumbs: 62 BriDn  63 hold->SHORTCUTS
 
-        layer0 {
+        Base {
             bindings = <
 &kp LC(UP)    &kp LG(SPACE)  &kp LG(LS(N4))  &kp C_PP      &kp LC(LEFT)  &kp LC(RIGHT)    &none  &kp LC(DOWN)  &kp LG(LBKT)  &kp LG(RBKT)  &kp LC(LG(D))  &kp LG(LS(N5))  &kp LC(LG(F))
 &kp C_VOL_UP  &kp Q          &kp W           &kp F         &kp P         &kp B            &none  &kp J         &kp L         &kp U         &kp Y          &kp SQT         &kp C_PREV
 &kp C_VOL_DN  &hml LGUI A    &hml LALT R     &hml LCTRL S  &hml LSHFT T  &kp G            &none  &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O     &kp C_NEXT
 &kp C_MUTE    &ltl 7 Z       &hml RALT X     &kp C         &kp D         &kp V            &none  &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &ltr 7 FSLH     &kp C_BRI_UP
-&none         &kp F14        &kp F13         &tlt 4 ESC    &tlt 1 SPACE  &tlt 3 TAB       &none  &tlt 5 ENTER  &tlt 2 BSPC   &tlt 6 DEL    &kp C_BRI_DN   &mo 8
+&none         &kp F14        &kp F13         &tlt 5 ESC    &tlt 1 SPACE  &tlt 4 TAB       &none  &tlt 3 ENTER  &tlt 2 BSPC   &tlt 6 DEL    &kp C_BRI_DN   &mo 8
             >;
 
             display-name = "Base";
@@ -290,6 +290,18 @@
             >;
 
             display-name = "Num";
+        };
+
+        Sym {
+            bindings = <
+&trans  &trans     &trans    &trans     &trans     &trans       &none  &trans  &trans     &trans     &trans    &trans       &trans
+&trans  &kp LBRC   &kp AMPS  &kp ASTRK  &kp LPAR   &kp RBRC     &none  &none   &none      &none      &none     &bootloader  &trans
+&trans  &kp COLON  &kp DLLR  &kp PRCNT  &kp CARET  &kp PLUS     &none  &none   &kp RSHFT  &kp RCTRL  &kp RALT  &kp RGUI     &trans
+&trans  &kp TILDE  &kp EXCL  &kp AT     &kp HASH   &kp PIPE     &none  &none   &none      &none      &kp RALT  &none        &trans
+&none   &trans     &trans    &kp LPAR   &kp RPAR   &kp UNDER    &none  &none   &none      &none      &trans    &trans
+            >;
+
+            display-name = "Sym";
         };
 
         Nav {
@@ -326,18 +338,6 @@
             >;
 
             display-name = "Media";
-        };
-
-        Sym {
-            bindings = <
-&trans  &trans     &trans    &trans     &trans     &trans       &none  &trans  &trans     &trans     &trans    &trans       &trans
-&trans  &kp LBRC   &kp AMPS  &kp ASTRK  &kp LPAR   &kp RBRC     &none  &none   &none      &none      &none     &bootloader  &trans
-&trans  &kp COLON  &kp DLLR  &kp PRCNT  &kp CARET  &kp PLUS     &none  &none   &kp RSHFT  &kp RCTRL  &kp RALT  &kp RGUI     &trans
-&trans  &kp TILDE  &kp EXCL  &kp AT     &kp HASH   &kp PIPE     &none  &none   &none      &none      &kp RALT  &none        &trans
-&none   &trans     &trans    &kp LPAR   &kp RPAR   &kp UNDER    &none  &none   &none      &none      &trans    &trans
-            >;
-
-            display-name = "Sym";
         };
 
         Fun {

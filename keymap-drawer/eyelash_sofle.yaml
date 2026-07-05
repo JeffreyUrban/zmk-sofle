@@ -164,11 +164,11 @@ layers:
   - $$mdi:arrow-right-bold$$
   - PASTE
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - +
+  - KP MULTIPLY
   - KP 4
   - KP 5
   - KP 6
-  - KP MULTIPLY
+  - KP PLUS
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - REDO
@@ -177,11 +177,11 @@ layers:
   - PgDn
   - COPY
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '-', s: _}
+  - KP DIVIDE
   - KP 1
   - KP 2
   - KP 3
-  - KP DIVIDE
+  - KP SUBTRACT
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - $$mdi:mouse-left-click-outline$$

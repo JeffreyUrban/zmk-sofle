@@ -273,8 +273,8 @@
 &kp LC(UP)    &kp LG(SPACE)  &kp LG(LS(N4))  &kp C_PP      &kp LC(LEFT)  &kp LC(RIGHT)    &none  &kp LC(DOWN)  &kp LG(LBKT)  &kp LG(RBKT)  &kp LC(LG(D))  &kp LG(LS(N5))  &kp LC(LG(F))
 &kp C_VOL_UP  &kp Q          &kp W           &kp F         &kp P         &kp B            &none  &kp J         &kp L         &kp U         &kp Y          &kp SQT         &kp C_PREV
 &kp C_VOL_DN  &hml LGUI A    &hml LALT R     &hml LCTRL S  &hml LSHFT T  &kp G            &none  &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O     &kp C_NEXT
-&kp C_MUTE    &ltl 5 Z       &hml RALT X     &kp C         &kp D         &kp V            &none  &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &ltr 5 FSLH     &kp C_BRI_UP
-&none         &kp F14        &kp F13         &tlt 3 ESC    &tlt 1 SPACE  &tlt 2 TAB       &none  &tlt 2 ENTER  &tlt 1 BSPC   &tlt 4 DEL    &kp C_BRI_DN   &mo 6
+&kp C_MUTE    &ltl 7 Z       &hml RALT X     &kp C         &kp D         &kp V            &none  &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &ltr 7 FSLH     &kp C_BRI_UP
+&none         &kp F14        &kp F13         &tlt 5 ESC    &tlt 1 SPACE  &tlt 2 TAB       &none  &tlt 2 ENTER  &tlt 1 BSPC   &tlt 6 DEL    &kp C_BRI_DN   &mo 8
             >;
 
             display-name = "Base";
@@ -298,10 +298,30 @@
 &trans  &none       &kp HOME        &kp UP_ARROW    &kp PAGE_UP      &kp K_CUT      &none  &none         &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp EQUAL        &trans
 &trans  &kp K_UNDO  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp K_PASTE    &none  &kp PLUS      &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_MULTIPLY  &trans
 &trans  &kp K_REDO  &kp END         &kp TAB         &kp PAGE_DOWN    &kp K_COPY     &none  &kp MINUS     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_DIVIDE    &trans
-&none   &trans      &trans          &none           &none            &none          &none  &kp KP_ENTER  &none            &kp KP_ENTER     &kp KP_NUMBER_0  &kp DOT
+&none   &trans      &mo 4           &mo 3           &none            &none          &none  &kp KP_ENTER  &none            &kp KP_ENTER     &kp KP_NUMBER_0  &kp DOT
             >;
 
             display-name = "NavNum";
+        };
+
+        Scroll {
+            bindings = <
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &msc SCRL_UP    &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        Mouse {
+            bindings = <
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &mmv MOVE_UP    &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
         };
 
         Media {

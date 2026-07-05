@@ -296,7 +296,7 @@
 &trans  &none       &kp HOME        &kp UP_ARROW    &kp PAGE_UP      &kp K_CUT      &none  &none         &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp EQUAL        &trans
 &trans  &kp K_UNDO  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp K_PASTE    &none  &kp PLUS      &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_MULTIPLY  &trans
 &trans  &kp K_REDO  &kp END         &kp TAB         &kp PAGE_DOWN    &kp K_COPY     &none  &kp MINUS     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_DIVIDE    &trans
-&none   &trans      &mo 4           &mo 3           &none            &none          &none  &kp KP_ENTER  &none            &kp KP_ENTER     &kp KP_NUMBER_0  &kp DOT
+&none   &mkp LCLK   &mkp MCLK       &mkp RCLK       &mo 3            &mo 4          &none  &kp KP_ENTER  &kp KP_NUMBER_0  &kp DOT          &none            &none
             >;
 
             display-name = "NavNum";

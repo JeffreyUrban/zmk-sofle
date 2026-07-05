@@ -296,7 +296,7 @@
 &trans  &none       &kp HOME        &kp UP_ARROW    &kp PAGE_UP      &kp K_CUT      &none  &kp KP_CLEAR     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9       &kp EQUAL              &trans
 &trans  &kp K_UNDO  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp K_PASTE    &none  &kp KP_MULTIPLY  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6       &kp KP_PLUS            &trans
 &trans  &kp K_REDO  &kp END         &kp TAB         &kp PAGE_DOWN    &kp K_COPY     &none  &kp KP_DIVIDE    &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3       &kp KP_SUBTRACT        &trans
-&none   &mkp LCLK   &mkp MCLK       &mkp RCLK       &mo 3            &mo 4          &none  &kp KP_ENTER     &kp KP_NUMBER_0  &kp DOT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&none   &none       &none           &none           &mo 3            &mo 4          &none  &kp KP_ENTER     &kp KP_NUMBER_0  &kp DOT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
             >;
 
             display-name = "NavNum";
@@ -317,7 +317,7 @@
 &trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans          &mmv MOVE_UP    &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &mkp LCLK       &mkp MCLK       &mkp RCLK        &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };

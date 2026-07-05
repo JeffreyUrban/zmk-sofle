@@ -282,7 +282,7 @@
 
         // ============================ NAV =============================
 
-        layer_1 {
+        Nav {
             bindings = <
 &trans  &trans       &trans    &trans     &trans     &trans    &none  &trans         &trans     &trans     &trans     &trans     &trans
 &trans  &bootloader  &none     &none      &none      &none     &none  &kp LS(LG(Z))  &kp LG(V)  &kp LG(C)  &kp LG(X)  &kp LG(Z)  &trans
@@ -296,7 +296,7 @@
 
         // =========================== MOUSE ============================
 
-        layer_2 {
+        Mouse {
             bindings = <
 &trans  &trans       &trans    &trans     &trans     &trans    &none  &trans         &trans          &trans          &trans        &trans           &trans
 &trans  &bootloader  &none     &none      &none      &none     &none  &kp LS(LG(Z))  &kp LG(V)       &kp LG(C)       &kp LG(X)     &kp LG(Z)        &trans
@@ -310,7 +310,7 @@
 
         // =========================== MEDIA ============================
 
-        layer_3 {
+        Media {
             bindings = <
 &trans  &trans       &trans    &trans     &trans     &trans    &none  &trans             &trans           &trans           &trans           &trans           &trans
 &trans  &bootloader  &none     &none      &none      &none     &none  &rgb_ug RGB_TOG    &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &trans
@@ -324,7 +324,7 @@
 
         // ============================ NUM =============================
 
-        layer_4 {
+        Num {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &none  &trans        &trans           &trans           &trans           &trans           &trans
 &trans  &none   &none   &none   &none   &none     &none  &none         &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp EQUAL        &trans
@@ -338,7 +338,7 @@
 
         // ============================ SYM =============================
 
-        layer_5 {
+        Sym {
             bindings = <
 &trans  &trans     &trans    &trans     &trans     &trans       &none  &trans  &trans     &trans     &trans    &trans       &trans
 &trans  &kp LBRC   &kp AMPS  &kp ASTRK  &kp LPAR   &kp RBRC     &none  &none   &none      &none      &none     &bootloader  &trans
@@ -352,7 +352,7 @@
 
         // ============================ FUN =============================
 
-        layer_6 {
+        Fun {
             bindings = <
 &trans  &trans   &trans  &trans     &trans     &trans             &none  &trans  &trans     &trans     &trans    &trans       &trans
 &trans  &kp F12  &kp F7  &kp F8     &kp F9     &kp PSCRN          &none  &none   &none      &none      &none     &bootloader  &trans
@@ -366,7 +366,7 @@
 
         // =========================== BUTTON ===========================
 
-        layer_7 {
+        Button {
             bindings = <
 &trans  &trans     &trans     &trans     &trans     &trans           &none  &trans         &trans     &trans     &trans     &trans     &trans
 &trans  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(Z))    &none  &kp LS(LG(Z))  &kp LG(V)  &kp LG(C)  &kp LG(X)  &kp LG(Z)  &trans
@@ -384,7 +384,7 @@
         // menu items to these in System Settings > Keyboard Shortcuts).
         // Right hand = system actions.
 
-        layer_8 {
+        Shortcuts {
             bindings = <
 &trans  &trans             &trans                &trans                &trans                 &trans               &none  &trans           &trans         &trans       &trans         &trans             &trans
 &trans  &none              &none                 &kp LC(LA(LG(UP)))    &none                  &none                &none  &kp LG(LA(ESC))  &kp LG(LS(T))  &kp LG(TAB)  &kp LC(LG(Q))  &kp LC(LG(SPACE))  &trans

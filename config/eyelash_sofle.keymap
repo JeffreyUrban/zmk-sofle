@@ -268,11 +268,11 @@
 
         Base {
             bindings = <
-&none  &none        &none        &none         &none         &none         &none  &none         &none         &u_bt_sel_0   &u_bt_sel_1    &none        &none
-&none  &kp Q        &kp W        &kp F         &kp P         &kp B         &none  &kp J         &kp L         &kp U         &kp Y          &kp SQT      &none
-&none  &hml LGUI A  &hml LALT R  &hml LCTRL S  &hml LSHFT T  &kp G         &none  &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O  &none
-&none  &kp Z        &hml RALT X  &kp C         &kp D         &kp V         &none  &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &kp FSLH     &none
-&none  &none        &none        &kp ESCAPE    &tlt 1 SPACE  &tlt 2 TAB    &none  &tlt 2 ENTER  &tlt 1 BSPC   &tlt 5 DEL    &none          &none
+&none  &none        &none        &none          &none         &none         &none  &none         &none         &u_bt_sel_0   &u_bt_sel_1    &none        &none
+&none  &kp Q        &kp W        &kp F          &kp P         &kp B         &none  &kp J         &kp L         &kp U         &kp Y          &kp SQT      &none
+&none  &hml LGUI A  &hml LALT R  &hml LCTRL S   &hml LSHFT T  &kp G         &none  &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O  &none
+&none  &kp Z        &hml RALT X  &kp C          &kp D         &kp V         &none  &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &kp FSLH     &none
+&none  &none        &none        &tlt 6 ESCAPE  &tlt 1 SPACE  &tlt 2 TAB    &none  &tlt 2 ENTER  &tlt 1 BSPC   &tlt 5 DEL    &none          &none
             >;
 
             display-name = "Base";

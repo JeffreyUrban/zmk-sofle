@@ -41,7 +41,7 @@ layers:
   - {t: O, h: RGUI}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: Z, h: Base}
+  - Z
   - {t: X, h: '$$mdi:apple-keyboard-option$$'}
   - C
   - D
@@ -51,7 +51,7 @@ layers:
   - H
   - {t: ',', s: <}
   - {t: ., h: '$$mdi:apple-keyboard-option$$', s: '>'}
-  - {t: /, h: Base, s: '?'}
+  - {t: /, s: '?'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}

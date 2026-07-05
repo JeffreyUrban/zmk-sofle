@@ -158,26 +158,26 @@ layers:
   - {t: '=', s: +}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - UNDO
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
   - $$mdi:arrow-right-bold$$
   - PASTE
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - +
   - KP 4
   - KP 5
   - KP 6
   - KP MULTIPLY
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - REDO
   - END
   - $$mdi:keyboard-tab$$
   - PgDn
   - COPY
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '-', s: _}
   - KP 1
   - KP 2
   - KP 3
@@ -191,9 +191,9 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: held}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: KP ENTER, type: held alternate}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - KP ENTER
   - KP 0
-  - {t: '-', s: _}
-  - +
   - {t: ., s: '>'}
   Mouse:
   - {t: '$$mdi:transfer$$', type: trans}

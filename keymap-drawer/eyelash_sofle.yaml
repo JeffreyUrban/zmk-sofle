@@ -57,11 +57,11 @@ layers:
   - F14
   - F13
   - {t: '$$mdi:keyboard-esc$$', h: Media}
-  - {t: '$$mdi:keyboard-space$$', h: NavNum}
-  - {t: '$$mdi:keyboard-tab$$', h: Sym}
+  - {t: '$$mdi:keyboard-space$$', h: Sym}
+  - {t: '$$mdi:keyboard-tab$$', h: NavNum}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:keyboard-return$$', h: Sym}
-  - {t: '$$mdi:backspace$$', h: NavNum}
+  - {t: '$$mdi:keyboard-return$$', h: NavNum}
+  - {t: '$$mdi:backspace$$', h: Sym}
   - {t: '$$mdi:backspace-reverse-outline$$', h: Fun}
   - $$mdi:brightness-7$$
   - Shortcuts
@@ -122,11 +122,11 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: held}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: held alternate}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: held alternate}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -187,11 +187,11 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: held}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - KP ENTER
-  - {t: KP 0, type: held alternate}
+  - {t: KP ENTER, type: held alternate}
+  - KP 0
   - {t: '-', s: _}
   - +
   - {t: ., s: '>'}

@@ -270,59 +270,15 @@
 
         layer0 {
             bindings = <
-&kp LC(UP)    &kp LG(SPACE)  &kp LG(LS(N4))  &kp C_PP        &kp LC(LEFT)    &kp LC(RIGHT)     &none  &kp LC(DOWN)    &kp LG(LBKT)   &kp LG(RBKT)  &kp LC(LG(D))  &kp LG(LS(N5))    &kp LC(LG(F))
-&kp C_VOL_UP  &kp Q          &kp W           &kp F           &kp P           &kp B             &none  &kp J           &kp L          &kp U         &kp Y          &kp SQT           &kp C_PREV
-&kp C_VOL_DN  &hml LGUI A    &hml LALT R     &hml LCTRL S    &hml LSHFT T    &kp G             &none  &kp M           &hmr RSHFT N   &hmr RCTRL E  &hmr RALT I    &hmr RGUI O       &kp C_NEXT
-&kp C_MUTE    &ltl BUTTON Z  &hml RALT X     &kp C           &kp D           &kp V             &none  &kp K           &kp H          &kp COMMA     &hmr RALT DOT  &ltr BUTTON FSLH  &kp C_BRI_UP
-&none         &kp F14        &kp F13         &tlt MEDIA ESC  &tlt NAV SPACE  &tlt MOUSE TAB    &none  &tlt SYM ENTER  &tlt NUM BSPC  &tlt FUN DEL  &kp C_BRI_DN   &mo SHORTCUTS
+&kp LC(UP)    &kp LG(SPACE)  &kp LG(LS(N4))  &kp C_PP      &kp LC(LEFT)  &kp LC(RIGHT)    &none  &kp LC(DOWN)  &kp LG(LBKT)  &kp LG(RBKT)  &kp LC(LG(D))  &kp LG(LS(N5))  &kp LC(LG(F))
+&kp C_VOL_UP  &kp Q          &kp W           &kp F         &kp P         &kp B            &none  &kp J         &kp L         &kp U         &kp Y          &kp SQT         &kp C_PREV
+&kp C_VOL_DN  &hml LGUI A    &hml LALT R     &hml LCTRL S  &hml LSHFT T  &kp G            &none  &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O     &kp C_NEXT
+&kp C_MUTE    &ltl 7 Z       &hml RALT X     &kp C         &kp D         &kp V            &none  &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &ltr 7 FSLH     &kp C_BRI_UP
+&none         &kp F14        &kp F13         &tlt 4 ESC    &tlt 1 SPACE  &tlt 3 TAB       &none  &tlt 5 ENTER  &tlt 2 BSPC   &tlt 6 DEL    &kp C_BRI_DN   &mo 8
             >;
 
             display-name = "Base";
         };
-
-        // ============================ NAV =============================
-
-        Nav {
-            bindings = <
-&trans  &trans       &trans    &trans     &trans     &trans    &none  &trans         &trans     &trans     &trans     &trans     &trans
-&trans  &bootloader  &none     &none      &none      &none     &none  &kp LS(LG(Z))  &kp LG(V)  &kp LG(C)  &kp LG(X)  &kp LG(Z)  &trans
-&trans  &kp LGUI     &kp LALT  &kp LCTRL  &kp LSHFT  &none     &none  &u_caps_word   &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans
-&trans  &none        &kp RALT  &none      &none      &none     &none  &kp INS        &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &trans
-&none   &trans       &trans    &none      &none      &none     &none  &kp ENTER      &kp BSPC   &kp DEL    &trans     &trans
-            >;
-
-            display-name = "Nav";
-        };
-
-        // =========================== MOUSE ============================
-
-        Mouse {
-            bindings = <
-&trans  &trans       &trans    &trans     &trans     &trans    &none  &trans         &trans          &trans          &trans        &trans           &trans
-&trans  &bootloader  &none     &none      &none      &none     &none  &kp LS(LG(Z))  &kp LG(V)       &kp LG(C)       &kp LG(X)     &kp LG(Z)        &trans
-&trans  &kp LGUI     &kp LALT  &kp LCTRL  &kp LSHFT  &none     &none  &none          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
-&trans  &none        &kp RALT  &none      &none      &none     &none  &none          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &trans
-&none   &trans       &trans    &none      &none      &none     &none  &mkp MB2       &mkp MB1        &mkp MB3        &trans        &trans
-            >;
-
-            display-name = "Mouse";
-        };
-
-        // =========================== MEDIA ============================
-
-        Media {
-            bindings = <
-&trans  &trans       &trans    &trans     &trans     &trans    &none  &trans             &trans           &trans           &trans           &trans           &trans
-&trans  &bootloader  &none     &none      &none      &none     &none  &rgb_ug RGB_TOG    &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &trans
-&trans  &kp LGUI     &kp LALT  &kp LCTRL  &kp LSHFT  &none     &none  &ext_power EP_TOG  &kp C_PREV       &kp C_VOL_DN     &kp C_VOL_UP     &kp C_NEXT       &trans
-&trans  &none        &kp RALT  &none      &none      &none     &none  &u_out_tog         &u_bt_sel_0      &u_bt_sel_1      &u_bt_sel_2      &u_bt_sel_3      &trans
-&none   &trans       &trans    &none      &none      &none     &none  &kp C_STOP         &kp C_PP         &kp C_MUTE       &trans           &trans
-            >;
-
-            display-name = "Media";
-        };
-
-        // ============================ NUM =============================
 
         Num {
             bindings = <
@@ -336,7 +292,41 @@
             display-name = "Num";
         };
 
-        // ============================ SYM =============================
+        Nav {
+            bindings = <
+&trans  &trans       &trans    &trans     &trans     &trans    &none  &trans         &trans     &trans     &trans     &trans     &trans
+&trans  &bootloader  &none     &none      &none      &none     &none  &kp LS(LG(Z))  &kp LG(V)  &kp LG(C)  &kp LG(X)  &kp LG(Z)  &trans
+&trans  &kp LGUI     &kp LALT  &kp LCTRL  &kp LSHFT  &none     &none  &u_caps_word   &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans
+&trans  &none        &kp RALT  &none      &none      &none     &none  &kp INS        &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &trans
+&none   &trans       &trans    &none      &none      &none     &none  &kp ENTER      &kp BSPC   &kp DEL    &trans     &trans
+            >;
+
+            display-name = "Nav";
+        };
+
+        Mouse {
+            bindings = <
+&trans  &trans       &trans    &trans     &trans     &trans    &none  &trans         &trans          &trans          &trans        &trans           &trans
+&trans  &bootloader  &none     &none      &none      &none     &none  &kp LS(LG(Z))  &kp LG(V)       &kp LG(C)       &kp LG(X)     &kp LG(Z)        &trans
+&trans  &kp LGUI     &kp LALT  &kp LCTRL  &kp LSHFT  &none     &none  &none          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
+&trans  &none        &kp RALT  &none      &none      &none     &none  &none          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &trans
+&none   &trans       &trans    &none      &none      &none     &none  &mkp MB2       &mkp MB1        &mkp MB3        &trans        &trans
+            >;
+
+            display-name = "Mouse";
+        };
+
+        Media {
+            bindings = <
+&trans  &trans       &trans    &trans     &trans     &trans    &none  &trans             &trans           &trans           &trans           &trans           &trans
+&trans  &bootloader  &none     &none      &none      &none     &none  &rgb_ug RGB_TOG    &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &trans
+&trans  &kp LGUI     &kp LALT  &kp LCTRL  &kp LSHFT  &none     &none  &ext_power EP_TOG  &kp C_PREV       &kp C_VOL_DN     &kp C_VOL_UP     &kp C_NEXT       &trans
+&trans  &none        &kp RALT  &none      &none      &none     &none  &u_out_tog         &u_bt_sel_0      &u_bt_sel_1      &u_bt_sel_2      &u_bt_sel_3      &trans
+&none   &trans       &trans    &none      &none      &none     &none  &kp C_STOP         &kp C_PP         &kp C_MUTE       &trans           &trans
+            >;
+
+            display-name = "Media";
+        };
 
         Sym {
             bindings = <
@@ -350,8 +340,6 @@
             display-name = "Sym";
         };
 
-        // ============================ FUN =============================
-
         Fun {
             bindings = <
 &trans  &trans   &trans  &trans     &trans     &trans             &none  &trans  &trans     &trans     &trans    &trans       &trans
@@ -364,8 +352,6 @@
             display-name = "Fun";
         };
 
-        // =========================== BUTTON ===========================
-
         Button {
             bindings = <
 &trans  &trans     &trans     &trans     &trans     &trans           &none  &trans         &trans     &trans     &trans     &trans     &trans
@@ -377,12 +363,6 @@
 
             display-name = "Button";
         };
-
-        // ========================= SHORTCUTS ==========================
-        // Held via outer-right thumb (pos 63). Left hand = native window
-        // tiling (Ctrl+Opt+Cmd + arrows/F/C -- reassign the Move & Resize
-        // menu items to these in System Settings > Keyboard Shortcuts).
-        // Right hand = system actions.
 
         Shortcuts {
             bindings = <

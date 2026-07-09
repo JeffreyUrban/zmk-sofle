@@ -80,43 +80,43 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - $$mdi:backspace-reverse-outline$$
+  - <
   - {t: '[', s: '{'}
   - {t: ']', s: '}'}
-  - $
+  - '>'
   - '%'
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - ^
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - '&'
   - '*'
-  - {t: '''', s: '"'}
-  - {t: '$$mdi:backspace$$', type: backspace}
+  - ^
+  - +
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - '{'
   - (
   - )
   - '}'
-  - {t: '=', s: +}
+  - $
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - +
-  - {t: '-', s: _}
-  - <
-  - '>'
+  - {t: ;, s: ':'}
+  - ':'
+  - _
+  - {t: '=', s: +}
   - '"'
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - '~'
   - {t: '`', s: '~'}
   - '|'
-  - _
-  - {t: ;, s: ':'}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: \, s: '|'}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - '@'
+  - {t: '-', s: _}
   - '#'
   - '!'
-  - ':'
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:transfer$$', type: trans}

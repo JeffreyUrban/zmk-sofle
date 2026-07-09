@@ -280,11 +280,11 @@
 
         Sym {
             bindings = <
-&none   &none           &none                 &none                  &none            &none            &none  &trans         &trans         &trans         &trans            &trans             &trans
-&trans  &kp DEL         &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp DOLLAR       &kp PERCENT      &none  &kp CARET      &kp AMPERSAND  &kp ASTERISK   &kp APOSTROPHE    &kp BACKSPACE      &trans
-&trans  &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp EQUAL        &none  &kp PLUS       &kp MINUS      &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES  &trans
-&trans  &kp TILDE       &kp GRAVE             &kp PIPE               &kp UNDER        &kp SEMICOLON    &none  &kp BACKSLASH  &kp AT         &kp HASH       &kp EXCLAMATION   &kp COLON          &trans
-&none   &trans          &trans                &none                  &none            &none            &none  &none          &none          &none          &trans            &trans
+&none   &none           &none                 &none                  &none             &none          &none  &trans         &trans         &trans          &trans     &trans             &trans
+&trans  &kp LESS_THAN   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp GREATER_THAN  &kp PERCENT    &none  &none          &kp AMPERSAND  &kp ASTERISK    &kp CARET  &kp PLUS           &trans
+&trans  &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE   &kp DOLLAR     &none  &kp SEMICOLON  &kp COLON      &kp UNDERSCORE  &kp EQUAL  &kp DOUBLE_QUOTES  &trans
+&trans  &kp TILDE       &kp GRAVE             &kp PIPE               &kp BACKSLASH     &none          &none  &none          &kp AT         &kp MINUS       &kp HASH   &kp EXCLAMATION    &trans
+&none   &trans          &trans                &none                  &none             &none          &none  &none          &none          &none           &trans     &trans
             >;
 
             display-name = "Sym";

@@ -241,6 +241,27 @@
             wait-ms = <0>;
             bindings = <&bt BT_SEL 3 &bt BT_CLR>;
         };
+
+        self: self {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp S &kp E &kp L &kp F &kp DOT>;
+            label = "SELF";
+        };
+
+        triple_equal: triple_equal {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp EQUAL &kp EQUAL &kp EQUAL>;
+            label = "TRIPLE_EQUAL";
+        };
+
+        question_dot: question_dot {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp QMARK &kp DOT>;
+            label = "QUESTION_DOT";
+        };
     };
 
     combos {
@@ -280,11 +301,11 @@
 
         Sym {
             bindings = <
-&none   &none           &none                 &none                  &none             &none          &none  &trans         &trans         &trans          &trans     &trans             &trans
-&trans  &kp LESS_THAN   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp GREATER_THAN  &kp PERCENT    &none  &none          &kp AMPERSAND  &kp ASTERISK    &kp CARET  &kp PLUS           &trans
-&trans  &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE   &kp DOLLAR     &none  &kp SEMICOLON  &kp COLON      &kp UNDERSCORE  &kp EQUAL  &kp DOUBLE_QUOTES  &trans
-&trans  &kp TILDE       &kp GRAVE             &kp PIPE               &kp BACKSLASH     &none          &none  &none          &kp AT         &kp MINUS       &kp HASH   &kp EXCLAMATION    &trans
-&none   &trans          &trans                &none                  &none             &none          &none  &none          &none          &none           &trans     &trans
+&none   &none           &none                 &none                  &none             &none            &none  &trans         &trans         &trans          &trans     &trans             &trans
+&trans  &kp LESS_THAN   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp GREATER_THAN  &kp PERCENT      &none  &question_dot  &kp AMPERSAND  &kp ASTERISK    &kp CARET  &kp PLUS           &trans
+&trans  &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE   &kp DOLLAR       &none  &kp SEMICOLON  &kp COLON      &kp UNDERSCORE  &kp EQUAL  &kp DOUBLE_QUOTES  &trans
+&trans  &kp TILDE       &kp GRAVE             &kp PIPE               &kp BACKSLASH     &triple_equal    &none  &self          &kp AT         &kp MINUS       &kp HASH   &kp EXCLAMATION    &trans
+&none   &trans          &trans                &none                  &none             &none            &none  &none          &none          &none           &trans     &trans
             >;
 
             display-name = "Sym";

@@ -42,7 +42,7 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - Z
-  - {t: X, h: '$$mdi:apple-keyboard-option$$'}
+  - X
   - C
   - D
   - V
@@ -50,7 +50,7 @@ layers:
   - K
   - H
   - {t: ',', s: <}
-  - {t: ., h: '$$mdi:apple-keyboard-option$$', s: '>'}
+  - .
   - {t: /, s: '?'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
@@ -110,7 +110,7 @@ layers:
   - {t: '`', s: '~'}
   - '|'
   - _
-  - {t: /, s: '?'}
+  - {t: ;, s: ':'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: \, s: '|'}
   - '@'
@@ -149,7 +149,7 @@ layers:
   - HOME
   - $$mdi:arrow-up-bold$$
   - PgUp
-  - CUT
+  - {t: X, h: '$$mdi:apple-keyboard-command$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - KP CLEAR
   - KP 7
@@ -158,11 +158,11 @@ layers:
   - {t: '=', s: +}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - UNDO
+  - {t: Z, h: '$$mdi:apple-keyboard-command$$'}
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
   - $$mdi:arrow-right-bold$$
-  - PASTE
+  - {t: V, h: '$$mdi:apple-keyboard-command$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - KP MULTIPLY
   - KP 4
@@ -171,11 +171,11 @@ layers:
   - KP PLUS
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - REDO
+  - Sft+Gui+Z
   - END
   - $$mdi:keyboard-tab$$
   - PgDn
-  - COPY
+  - {t: C, h: '$$mdi:apple-keyboard-command$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - KP DIVIDE
   - KP 1

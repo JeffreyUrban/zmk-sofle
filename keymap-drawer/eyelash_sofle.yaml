@@ -40,7 +40,7 @@ layers:
   - {t: I, h: '$$mdi:apple-keyboard-option$$'}
   - {t: O, h: RGUI}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - F5
   - Z
   - X
   - C
@@ -86,7 +86,7 @@ layers:
   - '>'
   - '%'
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&question_dot'
   - '&'
   - '*'
   - ^
@@ -110,9 +110,9 @@ layers:
   - {t: '`', s: '~'}
   - '|'
   - {t: \, s: '|'}
+  - '&triple_equal'
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&self'
   - '@'
   - {t: '-', s: _}
   - '#'

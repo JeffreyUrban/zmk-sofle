@@ -289,11 +289,11 @@
 
         Base {
             bindings = <
-&none  &none        &none        &none         &none         &none         &none  &none         &none         &u_bt_sel_0   &u_bt_sel_1  &none        &none
-&none  &kp Q        &kp W        &kp F         &kp P         &kp B         &none  &kp J         &kp L         &kp U         &kp Y        &kp SQT      &none
-&none  &hml LGUI A  &hml LALT R  &hml LCTRL S  &hml LSHFT T  &kp G         &none  &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I  &hmr RGUI O  &none
-&none  &kp Z        &kp X        &kp C         &kp D         &kp V         &none  &kp K         &kp H         &kp COMMA     &kp PERIOD   &kp FSLH     &none
-&none  &none        &none        &kp ESCAPE    &tlt 1 SPACE  &tlt 2 TAB    &none  &tlt 2 ENTER  &tlt 1 BSPC   &kp DELETE    &none        &none
+&none   &none        &none        &none         &none         &none         &none  &none         &none         &u_bt_sel_0   &u_bt_sel_1  &none        &none
+&none   &kp Q        &kp W        &kp F         &kp P         &kp B         &none  &kp J         &kp L         &kp U         &kp Y        &kp SQT      &none
+&none   &hml LGUI A  &hml LALT R  &hml LCTRL S  &hml LSHFT T  &kp G         &none  &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I  &hmr RGUI O  &none
+&kp F5  &kp Z        &kp X        &kp C         &kp D         &kp V         &none  &kp K         &kp H         &kp COMMA     &kp PERIOD   &kp FSLH     &none
+&none   &none        &none        &kp ESCAPE    &tlt 1 SPACE  &tlt 2 TAB    &none  &tlt 2 ENTER  &tlt 1 BSPC   &kp DELETE    &none        &none
             >;
 
             display-name = "Base";

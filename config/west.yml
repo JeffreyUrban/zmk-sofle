@@ -36,5 +36,9 @@ manifest:
     - name: zmk-module-runtime-input-processor
       remote: cormoran
       revision: zmk-v0.3.0.0
+    - name: prospector-zmk-module
+      url: https://github.com/JeffreyUrban/prospector-zmk-module
+      revision: main
+      path: modules/prospector-zmk-module
   self:
     path: config

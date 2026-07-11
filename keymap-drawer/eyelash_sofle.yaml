@@ -61,9 +61,9 @@ layers:
   - {t: '$$mdi:keyboard-tab$$', h: NavNum}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:keyboard-return$$', h: NavNum}
-  - {t: '$$mdi:backspace$$', h: Sym}
+  - {t: '$$mdi:keyboard-space$$', h: Sym}
+  - {t: '$$mdi:backspace$$', type: backspace}
   - $$mdi:backspace-reverse-outline$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   Sym:
   - {t: '$$mdi:minus-circle-outline$$', type: none}

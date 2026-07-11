@@ -47,16 +47,15 @@
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <dt-bindings/zmk/modifiers.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/modifiers.h>
 
 // ---- Layer indices -------------------------------------------------------
+
 #define BASE   0
 #define NAV    1
 #define MOUSE  2
@@ -70,6 +69,7 @@
 // ---- Positional hold-tap key groups (matrix positions) -------------------
 // Left alphas / right alphas / the 6 Miryoku thumb keys. A home-row mod only
 // becomes a modifier when paired with a key on the *opposite* hand or a thumb.
+
 #define KEYS_L 14 15 16 17 18 27 28 29 30 31 40 41 42 43 44
 #define KEYS_R 20 21 22 23 24 33 34 35 36 37 46 47 48 49 50
 #define KEYS_T 55 56 57 59 60 61
@@ -87,6 +87,7 @@
 };
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
+
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
 &soft_off { hold-time-ms = <2000>; };
@@ -96,6 +97,7 @@
         // [D1] Home-row mods, left hand. hold = modifier, tap = key.
         // Deviates from canonical "tap-preferred" u_mt: positional + idle
         // guard for fewer misfires (see header).
+
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -121,6 +123,7 @@
         };
 
         // [D1] Layer-tap on the outer bottom keys (Z / SLASH).
+
         ltl: layer_tap_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -146,6 +149,7 @@
         };
 
         // [D1] Thumb layer-taps. No positional restriction (deliberate).
+
         tlt: thumb_layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -157,71 +161,106 @@
 
         // Canonical Miryoku MEDIA-layer Shift functions (mod-morph: tap =
         // action, Shift+tap = the alternate). From manna-harbour/miryoku_zmk.
-        u_caps_word: u_caps_word {            // tap: Caps Word | shift: Caps Lock
+
+        u_caps_word: u_caps_word {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&caps_word>, <&kp CAPS>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        u_out_tog: u_out_tog {                // tap: toggle USB/BLE | shift: force USB
+        u_out_tog: u_out_tog {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&out OUT_TOG>, <&out OUT_USB>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        u_bt_sel_0: u_bt_sel_0 {              // tap: select BT 0 | shift: select + clear
+        u_bt_sel_0: u_bt_sel_0 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 0>, <&u_bt_clr_0>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
         u_bt_sel_1: u_bt_sel_1 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 1>, <&u_bt_clr_1>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
         u_bt_sel_2: u_bt_sel_2 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 2>, <&u_bt_clr_2>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
         u_bt_sel_3: u_bt_sel_3 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 3>, <&u_bt_clr_3>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
     macros {
         // Shift+BT: select the profile, then clear its bond (canonical).
+
         u_bt_clr_0: u_bt_clr_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
-            bindings = <&bt BT_SEL 0>, <&bt BT_CLR>;
+            bindings = <&bt BT_SEL 0 &bt BT_CLR>;
         };
+
         u_bt_clr_1: u_bt_clr_1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
-            bindings = <&bt BT_SEL 1>, <&bt BT_CLR>;
+            bindings = <&bt BT_SEL 1 &bt BT_CLR>;
         };
+
         u_bt_clr_2: u_bt_clr_2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
-            bindings = <&bt BT_SEL 2>, <&bt BT_CLR>;
+            bindings = <&bt BT_SEL 2 &bt BT_CLR>;
         };
+
         u_bt_clr_3: u_bt_clr_3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
-            bindings = <&bt BT_SEL 3>, <&bt BT_CLR>;
+            bindings = <&bt BT_SEL 3 &bt BT_CLR>;
+        };
+
+        self: self {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp S &kp E &kp L &kp F &kp DOT>;
+            label = "SELF";
+        };
+
+        triple_equal: triple_equal {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp EQUAL &kp EQUAL &kp EQUAL>;
+            label = "TRIPLE_EQUAL";
+        };
+
+        question_dot: question_dot {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp QMARK &kp DOT>;
+            label = "QUESTION_DOT";
         };
     };
 
@@ -229,6 +268,7 @@
         compatible = "zmk,combos";
 
         // Hold Q + R + Z together ~2s -> BLE deep sleep (wake with reset).
+
         softoff {
             bindings = <&soft_off>;
             key-positions = <14 28 40>;
@@ -246,115 +286,61 @@
         // RIGHT-side bare keys are for not-mousing / both-hands moments:
         //   Top R : AppExpose Back Fwd Look-up Screenshot-tool Fullscreen
         //   R-out : Prev Next BriUp          R-thumbs: 62 BriDn  63 hold->SHORTCUTS
-        layer0 {
+
+        Base {
             bindings = <
-&kp LC(UP)    &kp LG(SPACE) &kp LG(LS(N4)) &kp C_PP     &kp LC(LEFT)  &kp LC(RIGHT)   &none   &kp LC(DOWN)  &kp LG(LBKT)  &kp LG(RBKT)  &kp LC(LG(D))  &kp LG(LS(N5)) &kp LC(LG(F))
-&kp C_VOL_UP  &kp Q         &kp W         &kp F         &kp P         &kp B           &none   &kp J         &kp L         &kp U         &kp Y          &kp SQT        &kp C_PREV
-&kp C_VOL_DN  &hml LGUI A   &hml LALT R   &hml LCTRL S  &hml LSHFT T  &kp G           &none   &kp M         &hmr RSHFT N  &hmr RCTRL E  &hmr RALT I    &hmr RGUI O    &kp C_NEXT
-&kp C_MUTE    &ltl BUTTON Z &hml RALT X   &kp C         &kp D         &kp V           &none   &kp K         &kp H         &kp COMMA     &hmr RALT DOT  &ltr BUTTON FSLH &kp C_BRI_UP
-&none         &kp F14       &kp F13       &tlt MEDIA ESC &tlt NAV SPACE &tlt MOUSE TAB &none  &tlt SYM ENTER &tlt NUM BSPC &tlt FUN DEL  &kp C_BRI_DN   &mo SHORTCUTS
+&kp C_BRI_DEC      &kp C_BRI_INC  &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS  &kp C_AC_SEARCH  &none         &none         &none  &none         &none         &kp C_PLAY_PAUSE  &kp C_MUTE   &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
+&none              &kp Q          &kp W                              &kp F            &kp P         &kp B         &none  &kp J         &kp L         &kp U             &kp Y        &kp SQT            &none
+&kp LG(F1)         &hml LGUI A    &hml LALT R                        &hml LCTRL S     &hml LSHFT T  &kp G         &none  &kp M         &hmr RSHFT N  &hmr RCTRL E      &hmr RALT I  &hmr RGUI O        &none
+&kp LA(LC(LG(D)))  &kp Z          &kp X                              &kp C            &kp D         &kp V         &none  &kp K         &kp H         &kp COMMA         &kp PERIOD   &kp FSLH           &none
+&none              &none          &none                              &kp ESCAPE       &tlt 1 SPACE  &tlt 2 TAB    &none  &tlt 2 ENTER  &tlt 1 SPACE  &kp BACKSPACE     &kp DELETE   &none
             >;
+
             display-name = "Base";
         };
 
-        // ============================ NAV =============================
-        layer_1 {
+        Sym {
             bindings = <
-&trans  &trans       &trans     &trans      &trans      &trans     &none   &trans          &trans     &trans     &trans      &trans     &trans
-&trans  &bootloader  &none      &none       &none       &none      &none   &kp LS(LG(Z))   &kp LG(V)  &kp LG(C)  &kp LG(X)   &kp LG(Z)  &trans
-&trans  &kp LGUI     &kp LALT   &kp LCTRL   &kp LSHFT   &none      &none   &u_caps_word    &kp LEFT   &kp DOWN   &kp UP      &kp RIGHT  &trans
-&trans  &none        &kp RALT   &none       &none       &none      &none   &kp INS         &kp HOME   &kp PG_DN  &kp PG_UP   &kp END    &trans
-&none   &trans       &trans     &none       &none       &none      &none   &kp ENTER       &kp BSPC   &kp DEL    &trans      &trans
+&kp LS(LA(C_BRIGHTNESS_DEC))  &kp LS(LA(C_BRIGHTNESS_INC))  &trans                &trans                 &trans            &trans           &none  &trans         &trans         &trans          &trans     &kp LS(LA(C_VOLUME_DOWN))  &kp LS(LA(C_VOLUME_UP))
+&trans                        &kp LESS_THAN                 &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp GREATER_THAN  &kp PERCENT      &none  &question_dot  &kp AMPERSAND  &kp ASTERISK    &kp CARET  &kp PLUS                   &trans
+&trans                        &kp LEFT_BRACE                &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE   &kp DOLLAR       &none  &kp SEMICOLON  &kp COLON      &kp UNDERSCORE  &kp EQUAL  &kp DOUBLE_QUOTES          &trans
+&trans                        &kp TILDE                     &kp GRAVE             &kp PIPE               &kp BACKSLASH     &triple_equal    &none  &self          &kp AT         &kp MINUS       &kp HASH   &kp EXCLAMATION            &trans
+&none                         &trans                        &trans                &trans                 &trans            &trans           &none  &trans         &trans         &trans          &trans     &trans
             >;
-            display-name = "Nav";
-        };
 
-        // =========================== MOUSE ============================
-        layer_2 {
-            bindings = <
-&trans  &trans       &trans     &trans      &trans      &trans     &none   &trans          &trans          &trans         &trans          &trans     &trans
-&trans  &bootloader  &none      &none       &none       &none      &none   &kp LS(LG(Z))   &kp LG(V)       &kp LG(C)      &kp LG(X)       &kp LG(Z)  &trans
-&trans  &kp LGUI     &kp LALT   &kp LCTRL   &kp LSHFT   &none      &none   &none           &mmv MOVE_LEFT  &mmv MOVE_DOWN &mmv MOVE_UP    &mmv MOVE_RIGHT &trans
-&trans  &none        &kp RALT   &none       &none       &none      &none   &none           &msc SCRL_LEFT  &msc SCRL_DOWN &msc SCRL_UP    &msc SCRL_RIGHT &trans
-&none   &trans       &trans     &none       &none       &none      &none   &mkp MB2        &mkp MB1        &mkp MB3       &trans          &trans
-            >;
-            display-name = "Mouse";
-        };
-
-        // =========================== MEDIA ============================
-        layer_3 {
-            bindings = <
-&trans  &trans       &trans     &trans      &trans      &trans     &none   &trans            &trans          &trans          &trans          &trans          &trans
-&trans  &bootloader  &none      &none       &none       &none      &none   &rgb_ug RGB_TOG   &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &trans
-&trans  &kp LGUI     &kp LALT   &kp LCTRL   &kp LSHFT   &none      &none   &ext_power EP_TOG &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &trans
-&trans  &none        &kp RALT   &none       &none       &none      &none   &u_out_tog        &u_bt_sel_0     &u_bt_sel_1     &u_bt_sel_2     &u_bt_sel_3     &trans
-&none   &trans       &trans     &none       &none       &none      &none   &kp C_STOP        &kp C_PP        &kp C_MUTE      &trans          &trans
-            >;
-            display-name = "Media";
-        };
-
-        // ============================ NUM =============================
-        layer_4 {
-            bindings = <
-&trans  &trans     &trans   &trans   &trans   &trans     &none   &trans   &trans     &trans     &trans     &trans      &trans
-&trans  &kp LBKT   &kp N7   &kp N8   &kp N9   &kp RBKT   &none   &none    &none      &none      &none      &bootloader &trans
-&trans  &kp SEMI   &kp N4   &kp N5   &kp N6   &kp EQUAL  &none   &none    &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI    &trans
-&trans  &kp GRAVE  &kp N1   &kp N2   &kp N3   &kp BSLH   &none   &none    &none      &none      &kp RALT   &none       &trans
-&none   &trans     &trans   &kp DOT  &kp N0   &kp MINUS  &none   &none    &none      &none      &trans     &trans
-            >;
-            display-name = "Num";
-        };
-
-        // ============================ SYM =============================
-        layer_5 {
-            bindings = <
-&trans  &trans     &trans     &trans     &trans    &trans     &none   &trans   &trans     &trans     &trans     &trans      &trans
-&trans  &kp LBRC   &kp AMPS   &kp ASTRK  &kp LPAR  &kp RBRC   &none   &none    &none      &none      &none      &bootloader &trans
-&trans  &kp COLON  &kp DLLR   &kp PRCNT  &kp CARET &kp PLUS   &none   &none    &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI    &trans
-&trans  &kp TILDE  &kp EXCL   &kp AT     &kp HASH  &kp PIPE   &none   &none    &none      &none      &kp RALT   &none       &trans
-&none   &trans     &trans     &kp LPAR   &kp RPAR  &kp UNDER  &none   &none    &none      &none      &trans     &trans
-            >;
             display-name = "Sym";
         };
 
-        // ============================ FUN =============================
-        layer_6 {
+        NavNum {
             bindings = <
-&trans  &trans    &trans   &trans   &trans   &trans          &none   &trans   &trans     &trans     &trans     &trans      &trans
-&trans  &kp F12   &kp F7   &kp F8   &kp F9   &kp PSCRN       &none   &none    &none      &none      &none      &bootloader &trans
-&trans  &kp F11   &kp F4   &kp F5   &kp F6   &kp SLCK        &none   &none    &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI    &trans
-&trans  &kp F10   &kp F1   &kp F2   &kp F3   &kp PAUSE_BREAK &none   &none    &none      &none      &kp RALT   &none       &trans
-&none   &trans    &trans   &kp K_APP &kp SPACE &kp TAB        &none   &none    &none      &none      &trans     &trans
+&trans  &trans         &trans          &trans          &trans           &trans       &none  &trans           &trans           &trans           &trans                &trans                 &trans
+&trans  &none          &kp HOME        &kp UP_ARROW    &kp PAGE_UP      &kp LG(X)    &none  &kp KP_CLEAR     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9       &kp EQUAL              &trans
+&trans  &kp LG(Z)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LG(V)    &none  &kp KP_MULTIPLY  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6       &kp KP_PLUS            &trans
+&trans  &kp LS(LG(Z))  &kp END         &kp TAB         &kp PAGE_DOWN    &kp LG(C)    &none  &kp KP_DIVIDE    &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3       &kp KP_SUBTRACT        &trans
+&none   &none          &none           &none           &mo 3            &mo 4        &none  &kp KP_ENTER     &kp KP_NUMBER_0  &kp DOT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
             >;
-            display-name = "Fun";
+
+            display-name = "NavNum";
         };
 
-        // =========================== BUTTON ===========================
-        layer_7 {
+        Scroll {
             bindings = <
-&trans  &trans     &trans     &trans     &trans     &trans          &none   &trans          &trans     &trans     &trans     &trans     &trans
-&trans  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(Z))   &none   &kp LS(LG(Z))   &kp LG(V)  &kp LG(C)  &kp LG(X)  &kp LG(Z)  &trans
-&trans  &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none           &none   &none           &kp RSHFT  &kp RCTRL  &kp RALT   &kp RGUI   &trans
-&trans  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(Z))   &none   &kp LS(LG(Z))   &kp LG(V)  &kp LG(C)  &kp LG(X)  &kp LG(Z)  &trans
-&none   &trans     &trans     &mkp MB3   &mkp MB1   &mkp MB2        &none   &mkp MB2        &mkp MB1   &mkp MB3   &trans     &trans
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &msc SCRL_UP    &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
-            display-name = "Button";
         };
 
-        // ========================= SHORTCUTS ==========================
-        // Held via outer-right thumb (pos 63). Left hand = native window
-        // tiling (Ctrl+Opt+Cmd + arrows/F/C -- reassign the Move & Resize
-        // menu items to these in System Settings > Keyboard Shortcuts).
-        // Right hand = system actions.
-        layer_8 {
+        Mouse {
             bindings = <
-&trans  &trans              &trans                &trans                &trans                 &trans              &none   &trans          &trans         &trans     &trans     &trans  &trans
-&trans  &none               &none                 &kp LC(LA(LG(UP)))    &none                  &none               &none   &kp LG(LA(ESC)) &kp LG(LS(T))  &kp LG(TAB) &kp LC(LG(Q)) &kp LC(LG(SPACE)) &trans
-&trans  &kp LC(LA(LG(C)))   &kp LC(LA(LG(LEFT)))  &kp LC(LA(LG(DOWN)))  &kp LC(LA(LG(RIGHT)))  &kp LC(LA(LG(F)))   &none   &kp LG(MINUS)   &kp LG(EQUAL)  &none      &none      &none   &trans
-&trans  &none               &none                 &none                 &none                  &none               &none   &none           &none          &none      &none      &none   &trans
-&none   &trans              &trans                &none                 &none                  &none               &none   &none           &none          &none      &trans     &trans
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &mmv MOVE_UP    &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &mkp LCLK       &mkp MCLK       &mkp RCLK        &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &trans          &trans           &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
-            display-name = "Shortcuts";
         };
     };
 };

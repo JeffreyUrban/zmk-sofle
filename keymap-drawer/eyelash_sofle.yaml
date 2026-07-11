@@ -1,19 +1,19 @@
 layout: {zmk_keyboard: eyelash_sofle}
 layers:
   Base:
-  - F1
-  - F2
-  - F3
-  - F4
+  - $$mdi:brightness-7$$
+  - BRI INC
+  - AC DESKTOP SHOW ALL WINDOWS
+  - AC SEARCH
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - F8
-  - F10
-  - F11
-  - F12
+  - PLAY PAUSE
+  - $$mdi:volume-off$$
+  - $$mdi:volume-low$$
+  - $$mdi:volume-high$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - Q
   - W
@@ -66,8 +66,8 @@ layers:
   - $$mdi:backspace-reverse-outline$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   Sym:
-  - Sft+Alt+F1
-  - Sft+Alt+F2
+  - Sft+Alt+$$mdi:brightness-7$$
+  - Sft+Alt+$$mdi:brightness-5$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -77,8 +77,8 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - Sft+Alt+F11
-  - Sft+Alt+F12
+  - Sft+Alt+$$mdi:volume-low$$
+  - Sft+Alt+$$mdi:volume-high$$
   - {t: '$$mdi:transfer$$', type: trans}
   - <
   - {t: '[', s: '{'}

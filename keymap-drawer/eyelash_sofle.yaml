@@ -55,7 +55,7 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - $$mdi:apple-keyboard-command$$
   - $$mdi:keyboard-esc$$
   - {t: '$$mdi:keyboard-space$$', h: Sym}
   - {t: '$$mdi:keyboard-tab$$', h: NavNum}

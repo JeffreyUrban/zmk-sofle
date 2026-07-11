@@ -40,7 +40,7 @@ layers:
   - {t: I, h: '$$mdi:apple-keyboard-option$$'}
   - {t: O, h: RGUI}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - F5
+  - Alt+Ctl+Gui+D
   - Z
   - X
   - C

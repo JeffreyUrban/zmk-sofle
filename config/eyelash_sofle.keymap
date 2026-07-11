@@ -289,11 +289,11 @@
 
         Base {
             bindings = <
-&kp F1      &kp F2       &kp F3       &kp F4        &none         &none         &none  &none         &none         &kp F8         &kp F10      &kp F11      &kp F12
-&none       &kp Q        &kp W        &kp F         &kp P         &kp B         &none  &kp J         &kp L         &kp U          &kp Y        &kp SQT      &none
-&kp LG(F1)  &hml LGUI A  &hml LALT R  &hml LCTRL S  &hml LSHFT T  &kp G         &none  &kp M         &hmr RSHFT N  &hmr RCTRL E   &hmr RALT I  &hmr RGUI O  &none
-&kp F5      &kp Z        &kp X        &kp C         &kp D         &kp V         &none  &kp K         &kp H         &kp COMMA      &kp PERIOD   &kp FSLH     &none
-&none       &none        &none        &kp ESCAPE    &tlt 1 SPACE  &tlt 2 TAB    &none  &tlt 2 ENTER  &tlt 1 SPACE  &kp BACKSPACE  &kp DELETE   &none
+&kp C_BRI_DEC  &kp C_BRI_INC  &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS  &kp C_AC_SEARCH  &none         &none         &none  &none         &none         &kp C_PLAY_PAUSE  &kp C_MUTE   &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
+&none          &kp Q          &kp W                              &kp F            &kp P         &kp B         &none  &kp J         &kp L         &kp U             &kp Y        &kp SQT            &none
+&kp LG(F1)     &hml LGUI A    &hml LALT R                        &hml LCTRL S     &hml LSHFT T  &kp G         &none  &kp M         &hmr RSHFT N  &hmr RCTRL E      &hmr RALT I  &hmr RGUI O        &none
+&kp F5         &kp Z          &kp X                              &kp C            &kp D         &kp V         &none  &kp K         &kp H         &kp COMMA         &kp PERIOD   &kp FSLH           &none
+&none          &none          &none                              &kp ESCAPE       &tlt 1 SPACE  &tlt 2 TAB    &none  &tlt 2 ENTER  &tlt 1 SPACE  &kp BACKSPACE     &kp DELETE   &none
             >;
 
             display-name = "Base";
@@ -301,11 +301,11 @@
 
         Sym {
             bindings = <
-&kp LS(LA(F1))  &kp LS(LA(F2))  &trans                &trans                 &trans            &trans           &none  &trans         &trans         &trans          &trans     &kp LS(LA(F11))    &kp LS(LA(F12))
-&trans          &kp LESS_THAN   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp GREATER_THAN  &kp PERCENT      &none  &question_dot  &kp AMPERSAND  &kp ASTERISK    &kp CARET  &kp PLUS           &trans
-&trans          &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE   &kp DOLLAR       &none  &kp SEMICOLON  &kp COLON      &kp UNDERSCORE  &kp EQUAL  &kp DOUBLE_QUOTES  &trans
-&trans          &kp TILDE       &kp GRAVE             &kp PIPE               &kp BACKSLASH     &triple_equal    &none  &self          &kp AT         &kp MINUS       &kp HASH   &kp EXCLAMATION    &trans
-&none           &trans          &trans                &trans                 &trans            &trans           &none  &trans         &trans         &trans          &trans     &trans
+&kp LS(LA(C_BRIGHTNESS_DEC))  &kp LS(LA(C_BRIGHTNESS_INC))  &trans                &trans                 &trans            &trans           &none  &trans         &trans         &trans          &trans     &kp LS(LA(C_VOLUME_DOWN))  &kp LS(LA(C_VOLUME_UP))
+&trans                        &kp LESS_THAN                 &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp GREATER_THAN  &kp PERCENT      &none  &question_dot  &kp AMPERSAND  &kp ASTERISK    &kp CARET  &kp PLUS                   &trans
+&trans                        &kp LEFT_BRACE                &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE   &kp DOLLAR       &none  &kp SEMICOLON  &kp COLON      &kp UNDERSCORE  &kp EQUAL  &kp DOUBLE_QUOTES          &trans
+&trans                        &kp TILDE                     &kp GRAVE             &kp PIPE               &kp BACKSLASH     &triple_equal    &none  &self          &kp AT         &kp MINUS       &kp HASH   &kp EXCLAMATION            &trans
+&none                         &trans                        &trans                &trans                 &trans            &trans           &none  &trans         &trans         &trans          &trans     &trans
             >;
 
             display-name = "Sym";

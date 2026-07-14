@@ -48,8 +48,8 @@
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <dt-bindings/zmk/modifiers.h>
-#include <behaviors.dtsi>
 #include <behaviors/prospector_brightness.dtsi>
+#include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
@@ -314,11 +314,11 @@
 
         NavNum {
             bindings = <
-&prospector_brightness 0  &prospector_brightness 1         &trans          &trans          &trans           &trans       &none  &trans           &trans           &trans           &trans                &trans                 &trans
-&trans  &none          &kp HOME        &kp UP_ARROW    &kp PAGE_UP      &kp LG(X)    &none  &kp KP_CLEAR     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9       &kp EQUAL              &trans
-&trans  &kp LG(Z)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LG(V)    &none  &kp KP_MULTIPLY  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6       &kp KP_PLUS            &trans
-&trans  &kp LS(LG(Z))  &kp END         &kp TAB         &kp PAGE_DOWN    &kp LG(C)    &none  &kp KP_DIVIDE    &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3       &kp KP_SUBTRACT        &trans
-&none   &none          &none           &none           &mo 3            &mo 4        &none  &kp KP_ENTER     &kp KP_NUMBER_0  &kp DOT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&prospector_brightness 0  &prospector_brightness 1  &trans          &trans          &trans           &trans       &none  &trans           &trans        &trans        &trans                &trans                 &trans
+&trans                    &none                     &kp HOME        &kp UP_ARROW    &kp PAGE_UP      &kp LG(X)    &none  &kp KP_CLEAR     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9          &kp EQUAL              &trans
+&trans                    &kp LG(Z)                 &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LG(V)    &none  &kp KP_MULTIPLY  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6          &kp KP_PLUS            &trans
+&trans                    &kp LS(LG(Z))             &kp END         &kp TAB         &kp PAGE_DOWN    &kp LG(C)    &none  &kp KP_DIVIDE    &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3          &kp KP_SUBTRACT        &trans
+&none                     &none                     &none           &none           &mo 3            &mo 4        &none  &kp KP_ENTER     &kp NUMBER_0  &kp DOT       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
             >;
 
             display-name = "NavNum";

@@ -38,7 +38,7 @@ manifest:
       revision: zmk-v0.3.0.0
     - name: prospector-zmk-module
       url: https://github.com/JeffreyUrban/prospector-zmk-module
-      revision: main
+      revision: feat/oled-battery-gauges
       path: modules/prospector-zmk-module
   self:
     path: config
